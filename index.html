@@ -132,15 +132,19 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .book::before{content:"";position:absolute;z-index:-1;inset:16px -14px -14px -14px;background:var(--navy);border-radius:12px 12px 20px 20px}
 .book::after{content:"";position:absolute;top:21px;bottom:0;left:50%;width:76px;transform:translateX(-50%);pointer-events:none;background:linear-gradient(90deg,rgba(25,34,79,0),rgba(25,34,79,.06) 38%,rgba(25,34,79,.16) 50%,rgba(25,34,79,.05) 62%,rgba(25,34,79,0))}
 .page{position:relative;background:var(--paper);box-shadow:0 4px 0 #e3e1d8}
-.page-l{display:flex;flex-direction:column;min-height:640px;padding:clamp(40px,5vw,66px) clamp(26px,4.2vw,58px) 0;border-radius:50% 50% 0 10px / 22px 22px 0 10px}
+.page-l{display:flex;flex-direction:column;min-height:680px;padding:clamp(40px,5vw,66px) clamp(26px,4.2vw,58px) 0;border-radius:50% 50% 0 10px / 22px 22px 0 10px}
 .page-l-in{container-type:inline-size;display:flex;flex-direction:column;flex:1}
 .page-r{overflow:hidden;border-radius:50% 50% 10px 0 / 22px 22px 10px 0}
 .page-r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block}
 .page-r::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--paper),rgba(245,244,239,0) 10%,rgba(245,244,239,0) 90%,var(--paper)),linear-gradient(180deg,var(--paper),rgba(245,244,239,0) 8%)}
 .plate-cap{position:absolute;right:18px;bottom:18px;z-index:1;background:#fff;color:var(--navy-deep);font-weight:700;font-size:.9rem;padding:5px 15px;border-radius:999px}
-.hero h1{font-size:clamp(2.2rem,5vw,3.7rem);line-height:1.15}
-@supports (container-type:inline-size){.hero h1{font-size:clamp(2.1rem,13cqi,3.75rem)}}
-.hero-sub{margin-top:20px;font-weight:700;font-size:clamp(1.12rem,1.9vw,1.3rem);line-height:1.45;letter-spacing:-.015em}
+.hero h1{font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1.2}
+@supports (container-type:inline-size){.hero h1{font-size:clamp(1.5rem,9.2cqi,2.8rem)}}
+.hero-points{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;font-size:1.02rem;line-height:1.55;color:var(--ink-soft)}
+.hero-points li{display:flex;gap:10px}
+.hero-points strong{color:var(--navy-deep)}
+.hp-ico{flex:none;width:1.4em;text-align:center}
+.hero-sub{margin-top:20px;font-weight:700;font-size:clamp(1.05rem,1.7vw,1.2rem);line-height:1.5;letter-spacing:-.015em}
 .hero-lead{margin-top:12px;color:var(--ink-soft);font-size:1.03rem;max-width:30em}
 .hero .btn-row{margin-top:28px}
 .where{margin-top:auto;padding:26px 0 30px;max-width:calc(100% - 190px);display:grid;gap:6px;font-size:.93rem;line-height:1.5}
@@ -446,16 +450,20 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     <div class="book">
       <div class="page page-l">
         <div class="page-l-in">
-          <h1 id="hero-title">책을 덮지 않는<br>영어</h1>
-          <p class="hero-sub">시험 기간에도 원서 읽기는 계속됩니다.</p>
-          <p class="hero-lead">파닉스로 시작해 원서 리딩, 문법, 영자신문 토론, 고전 문학까지. 꾸준히 읽어 온 아이에게 교과서는 짧은 글이 됩니다.</p>
+          <h1 id="hero-title"><span class="nb">생각하고, 쓰고, 말하는</span><br><span class="nb">켈리영어독서학원</span></h1>
+          <ul class="hero-points">
+            <li><span class="hp-ico" aria-hidden="true">📖</span><span><strong>읽고</strong> — 좋은 책 한 권으로, 맥락 속에서 단어와 문장을 만납니다.</span></li>
+            <li><span class="hp-ico" aria-hidden="true">✍️</span><span><strong>쓰고</strong> — 문장을 넓히고 줄거리를 요약하며, 선생님의 1:1 첨삭으로 다듬습니다.</span></li>
+            <li><span class="hp-ico" aria-hidden="true">💬</span><span><strong>말하고</strong> — 책에 대해 묻고 답하는 1:1 Speaking Check-up으로 내 생각을 영어로 꺼냅니다.</span></li>
+          </ul>
+          <p class="hero-sub">한 권의 책이 한 문장이 되고,<br>한 문장이 내 생각이 될 때까지. <span class="nb">켈리가 함께합니다.</span></p>
           <div class="btn-row">
             <a class="btn btn-navy" href="#contact">상담 문의하기</a>
             <a class="btn btn-line" href="#lab">워크시트 체험하기</a>
           </div>
           <dl class="where">
             <div><dt>위치</dt><dd>군포시 광정로 70 유공빌딩</dd></div>
-            <div><dt>운영</dt><dd>평일 <span class="nb">오후 2시 ~ 8시</span></dd></div>
+            <div><dt>운영</dt><dd><span class="nb">월·수·금 오후 2시 ~ 8시</span><br><span class="nb">화·목 오후 2시 ~ 9시</span></dd></div>
           </dl>
         </div>
       </div>
@@ -733,7 +741,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
       </details>
       <details>
         <summary>상담은 어떻게 신청하나요?</summary>
-        <p class="faq-a">카카오톡 채널 <span class="nb">‘켈리영어독서학원’이나</span> 전화 <span class="nb">010-9892-4088로</span> 문의해 주세요. 운영 시간은 평일 오후 2시부터 8시까지입니다.</p>
+        <p class="faq-a">카카오톡 채널 <span class="nb">‘켈리영어독서학원’이나</span> 전화 <span class="nb">010-9892-4088로</span> 문의해 주세요. 운영 시간은 <span class="nb">월·수·금 오후 2시부터 8시까지,</span> <span class="nb">화·목 오후 2시부터 9시까지입니다.</span></p>
       </details>
     </div>
   </div>
@@ -783,7 +791,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
         <dl class="info">
           <div><dt>카카오톡 채널</dt><dd><span>카카오톡에서 <span class="nb">‘켈리영어독서학원’을</span> 검색해 주세요.</span><button class="btn btn-yellow btn-sm" type="button" data-copy="켈리영어독서학원" data-copied="채널 이름을 복사했습니다. 카카오톡 검색창에 붙여 넣으세요."><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>채널 이름 복사</button></dd></div>
           <div><dt>상담 전화</dt><dd><a class="tel" href="tel:01098924088">010-9892-4088</a></dd></div>
-          <div><dt>운영 시간</dt><dd>평일 오후 2시 ~ 8시</dd></div>
+          <div><dt>운영 시간</dt><dd><span class="nb">월·수·금 오후 2시 ~ 8시</span><br><span class="nb">화·목 오후 2시 ~ 9시</span></dd></div>
           <div><dt>위치</dt><dd><span>경기 군포시 광정로 70 유공빌딩</span><a href="https://map.naver.com/p/search/켈리영어독서학원" target="_blank" rel="noopener">네이버 지도에서 보기</a></dd></div>
           <div><dt>더 보기</dt><dd class="links"><a href="https://blog.naver.com/berrykong7" target="_blank" rel="noopener">네이버 블로그</a><a href="https://www.instagram.com/kellyenglish_sanbon/" target="_blank" rel="noopener">인스타그램</a><a href="https://daangn.com/kr/local-profile/%EC%BC%88%EB%A6%AC%EC%98%81%EC%96%B4%EB%8F%85%EC%84%9C%ED%95%99%EC%9B%90-aouf2ff5i3ba/" target="_blank" rel="noopener">당근 학부모 후기</a></dd></div>
         </dl>
