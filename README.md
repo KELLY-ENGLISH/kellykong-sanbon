@@ -12,7 +12,7 @@
 index.html              홈페이지 (여기만 고치면 됩니다)
 worksheets/             워크시트 체험판 3종 (Trolley Lab, Justice Lab, UBI Lab)
 assets/video/           홍보 영상(mp4)과 대표 장면(webp)
-assets/emo/             켈리쌤 이모티콘 47종 (e01.webp = 움직임, e01-s.webp = 멈춘 그림)
+assets/emo/             켈리콩 이모티콘 47종 (e01.webp = 움직임, e01-s.webp = 멈춘 그림)
 assets/img/             원장 사진, 워크시트 화면, 링크 미리보기 이미지
 assets/fonts/           글꼴 (Pretendard, Noto Serif KR 한글 2,780자 묶음)
 .nojekyll               GitHub Pages가 파일을 그대로 내보내게 하는 빈 파일
