@@ -2,7 +2,7 @@
 
 산본 켈리영어독서학원의 홈페이지입니다.
 
-주소: https://kwan-jenny.github.io/kelly-english-homepage/
+주소: https://KELLY-ENGLISH.github.io/kellykong-sanbon/
 
 빌드 과정이 없는 정적 사이트입니다. `index.html` 한 파일에 화면·스타일·동작이 모두 들어 있고, `main` 브랜치에 올린 내용이 몇 분 뒤 위 주소에 그대로 반영됩니다.
 
