@@ -175,6 +175,19 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 
 /* ---------- 커리큘럼: 책등 ---------- */
 .cur{background:var(--paper)}
+.shelf-col{min-width:0}
+.cur-hint{position:relative;display:flex;width:fit-content;max-width:100%;align-items:center;gap:12px;margin:0 0 34px;padding:14px 22px 14px 16px;border-radius:18px;background:var(--yellow);color:var(--navy-deep);font-size:1.02rem;line-height:1.5;box-shadow:0 10px 24px rgba(25,34,79,.14)}
+.cur-hint::after{content:"";position:absolute;left:48px;bottom:-13px;width:26px;height:14px;background:var(--yellow);clip-path:polygon(0 0,100% 0,50% 100%)}
+.cur-hint strong{font-weight:800;font-size:1.1rem;margin-right:4px}
+.cur-hint-ico{flex:none;display:grid;place-items:center;width:42px;height:42px;border-radius:50%;background:#fff;font-size:1.35rem}
+@media (prefers-reduced-motion:no-preference){
+  .cur-hint:not(.done){animation:hintBob 1.8s ease-in-out infinite}
+  .shelf:not(.touched) .spine[aria-selected="false"]{animation:spineHop 3.6s ease-in-out infinite;animation-delay:calc(var(--n,0) * .14s)}
+}
+@keyframes hintBob{0%,100%{translate:0 0}50%{translate:0 -5px}}
+@keyframes spineHop{0%,62%,100%{translate:0 0}70%{translate:0 -12px}78%{translate:0 0}84%{translate:0 -4px}90%{translate:0 0}}
+.cur-hint.done{background:var(--cream);box-shadow:none}
+.cur-hint.done::after{background:var(--cream)}
 .cur-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(26px,4.4vw,60px);align-items:end}
 .shelf{display:flex;align-items:flex-end;gap:8px;height:400px;padding:0 12px;border-bottom:12px solid var(--navy);border-radius:0 0 5px 5px}
 .spine{position:relative;flex:1 1 0;min-width:0;height:var(--h);display:flex;flex-direction:column;align-items:center;justify-content:space-between;padding:34px 2px 16px;border:0;border-radius:7px 7px 0 0;background:var(--c);color:var(--t);cursor:pointer;transition:height .2s ease}
@@ -561,15 +574,18 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
   <div class="wrap">
     <div class="sec-head">
       <h2 id="cur-title">파닉스에서 고전 문학까지,<br>한 권씩 올라갑니다</h2>
-      <p>Level P부터 Level D까지 다섯 단계입니다. 책등을 누르면 그 단계의 읽기 · 쓰기 · 문법이 나옵니다.</p>
+      <p>Level P부터 Level D까지, 다섯 단계로 올라갑니다.</p>
     </div>
     <div class="cur-grid">
-      <div class="shelf" role="tablist" aria-label="Kelly English Roadmap 단계">
-        <button class="spine" type="button" role="tab" id="sp-p" data-stage="p" aria-controls="st-p" aria-selected="true" aria-label="Level P" style="--h:58%;--c:var(--yellow);--t:var(--navy-deep)"><span class="spine-lv"><small>LEVEL</small>P</span><span class="spine-en">Phonics</span></button>
-        <button class="spine" type="button" role="tab" id="sp-a" data-stage="a" aria-controls="st-a" aria-selected="false" aria-label="Level A" style="--h:66%;--c:var(--navy);--t:#fff"><span class="spine-lv"><small>LEVEL</small>A</span><span class="spine-en">Picture Books</span></button>
-        <button class="spine outlined" type="button" role="tab" id="sp-b" data-stage="b" aria-controls="st-b" aria-selected="false" aria-label="Level B" style="--h:75%;--c:var(--cream);--t:var(--navy-deep)"><span class="spine-lv"><small>LEVEL</small>B</span><span class="spine-en">Early Chapter Books</span></button>
-        <button class="spine" type="button" role="tab" id="sp-c" data-stage="c" aria-controls="st-c" aria-selected="false" aria-label="Level C" style="--h:84%;--c:var(--navy-deep);--t:var(--yellow)"><span class="spine-lv"><small>LEVEL</small>C</span><span class="spine-en">Chapter Books</span></button>
-        <button class="spine" type="button" role="tab" id="sp-d" data-stage="d" aria-controls="st-d" aria-selected="false" aria-label="Level D" style="--h:93%;--c:var(--yellow-deep);--t:var(--navy-deep)"><span class="spine-lv"><small>LEVEL</small>D</span><span class="spine-en">Novels &amp; Non-fiction</span></button>
+      <div class="shelf-col">
+      <p class="cur-hint" id="curHint"><span class="cur-hint-ico" aria-hidden="true">👆</span><span><strong>책등을 하나씩 눌러 보세요!</strong> 단계마다 읽기 · 쓰기 · 문법과 북리포트 예시가 열립니다.</span></p>
+        <div class="shelf" role="tablist" aria-label="Kelly English Roadmap 단계">
+          <button class="spine" type="button" role="tab" id="sp-p" data-stage="p" aria-controls="st-p" aria-selected="true" aria-label="Level P" style="--h:58%;--c:var(--yellow);--t:var(--navy-deep)"><span class="spine-lv"><small>LEVEL</small>P</span><span class="spine-en">Phonics</span></button>
+          <button class="spine" type="button" role="tab" id="sp-a" data-stage="a" aria-controls="st-a" aria-selected="false" aria-label="Level A" style="--h:66%;--c:var(--navy);--t:#fff"><span class="spine-lv"><small>LEVEL</small>A</span><span class="spine-en">Picture Books</span></button>
+          <button class="spine outlined" type="button" role="tab" id="sp-b" data-stage="b" aria-controls="st-b" aria-selected="false" aria-label="Level B" style="--h:75%;--c:var(--cream);--t:var(--navy-deep)"><span class="spine-lv"><small>LEVEL</small>B</span><span class="spine-en">Early Chapter Books</span></button>
+          <button class="spine" type="button" role="tab" id="sp-c" data-stage="c" aria-controls="st-c" aria-selected="false" aria-label="Level C" style="--h:84%;--c:var(--navy-deep);--t:var(--yellow)"><span class="spine-lv"><small>LEVEL</small>C</span><span class="spine-en">Chapter Books</span></button>
+          <button class="spine" type="button" role="tab" id="sp-d" data-stage="d" aria-controls="st-d" aria-selected="false" aria-label="Level D" style="--h:93%;--c:var(--yellow-deep);--t:var(--navy-deep)"><span class="spine-lv"><small>LEVEL</small>D</span><span class="spine-en">Novels &amp; Non-fiction</span></button>
+        </div>
       </div>
       <div class="stages">
         <article class="stage-panel" id="st-p" data-stage="p" role="tabpanel" aria-labelledby="sp-p">
@@ -1130,8 +1146,14 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     });
     panels.forEach(function (p) { p.hidden = p.dataset.stage !== id; });
   }
+  spines.forEach(function (s, i) { s.style.setProperty('--n', i); });
+  var shelfEl = spines.length ? spines[0].parentNode : null, curHint = $('#curHint');
+  function touched() {
+    if (shelfEl) shelfEl.classList.add('touched');
+    if (curHint) curHint.classList.add('done');
+  }
   spines.forEach(function (s, i) {
-    s.addEventListener('click', function () { pickStage(s.dataset.stage); });
+    s.addEventListener('click', function () { pickStage(s.dataset.stage); touched(); });
     s.addEventListener('keydown', function (e) {
       var j = -1;
       if (e.key === 'ArrowRight') j = (i + 1) % spines.length;
