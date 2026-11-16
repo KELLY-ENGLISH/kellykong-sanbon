@@ -217,6 +217,8 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .report-thumb{flex:none;width:112px;padding:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;cursor:zoom-in;transition:transform .15s ease}
 .report-thumb:hover{transform:scale(1.03)}
 .report-thumb img{display:block;width:100%;height:auto;aspect-ratio:1200/1705;object-fit:cover;object-position:top}
+.report-thumb.wide{width:170px}
+.report-thumb.wide img{aspect-ratio:auto}
 .report figcaption{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0;font-size:.94rem;line-height:1.55;color:var(--ink-soft)}
 .report figcaption strong{font-size:1.02rem;color:var(--navy-deep)}
 .report-tag{font-size:.78rem;font-weight:700;color:var(--navy-deep);background:var(--yellow);border-radius:999px;padding:1px 10px}
@@ -225,6 +227,9 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .rdlg .xbtn{display:flex;width:fit-content;margin:0 0 10px auto;color:#fff}
 .rdlg-scroll{max-height:calc(100dvh - 110px);overflow:auto;border-radius:14px;background:#fff}
 .rdlg img{display:block;width:100%;height:auto;aspect-ratio:auto}
+.rdlg.wide{width:auto;max-width:calc(100% - 24px)}
+.rdlg.wide .rdlg-scroll{overflow:hidden;width:fit-content;max-width:100%;margin:0 auto}
+.rdlg.wide img{width:auto;max-width:100%;max-height:calc(100dvh - 110px);margin:0 auto}
 .stage-links{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
 .cur-note{margin-top:34px;max-width:46em;color:var(--ink-soft)}
 .cur-note strong{color:var(--ink)}
@@ -681,7 +686,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <li>책에 대해 묻고 답하며 생각을 영어로 말합니다.</li>
           </ul>
           <figure class="report">
-            <button class="report-thumb" type="button" data-report="c" aria-label="Level C 북리포트 작성 예시 크게 보기"><img src="assets/img/report-c.webp?v=1116b" width="1200" height="3419" loading="lazy" alt="Level C 정독 북리포트 작성 예시 2장. 줄거리 요약과 의견 에세이 초안, 고쳐 쓰기, 선생님의 피드백이 채워져 있다."></button>
+            <button class="report-thumb wide" type="button" data-report="c" aria-label="Level C 북리포트 작성 예시 크게 보기"><img src="assets/img/report-c.webp?v=1116c" width="2413" height="1698" loading="lazy" alt="Level C 정독 북리포트 작성 예시 2장. 줄거리 요약과 의견 에세이 초안, 고쳐 쓰기, 선생님의 피드백이 채워져 있다."></button>
             <figcaption>
               <span class="report-tag">작성 예시</span>
               <strong>Level C 정독 북리포트</strong>
@@ -1255,6 +1260,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     if (!th) return;
     if (typeof rdlg.showModal !== 'function') { window.location.href = th.getAttribute('src'); return; }
     rdlgImg.src = th.getAttribute('src'); rdlgImg.alt = th.alt;
+    rdlg.classList.toggle('wide', th.closest('.report-thumb').classList.contains('wide'));
     rdlg.showModal();
     rdlg.querySelector('.rdlg-scroll').scrollTop = 0;
   }
