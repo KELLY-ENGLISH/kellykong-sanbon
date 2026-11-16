@@ -431,6 +431,10 @@ button.vcard:hover .vplay{background:#fff}
 /* ---------- 상담 ---------- */
 .contact{background:var(--navy);color:#fff}
 .contact .sec-head p{color:rgba(255,255,255,.8)}
+.c-acts{margin-top:24px;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.c-acts .btn{padding:0 12px;white-space:nowrap}
+#cKakao{grid-column:1 / -1;min-height:58px;font-size:1.08rem}
+@media (max-width:420px){.c-acts .btn{font-size:.9rem;padding:0 6px;gap:5px}.c-acts .btn .ic{display:none}#cKakao .ic{display:inline-block}}
 .contact-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(28px,5vw,64px);align-items:start}
 .builder{background:#fff;color:var(--ink);border-radius:26px;padding:clamp(22px,3.2vw,36px);display:grid;gap:22px}
 .field{display:grid;gap:9px;border:0;padding:0;margin:0;min-width:0}
@@ -973,7 +977,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
   <div class="wrap">
     <div class="sec-head">
       <h2 id="contact-title">상담 문의</h2>
-      <p>아이 학년과 궁금한 수업을 고르면 보낼 메시지가 만들어집니다. 복사해서 카카오톡 채널이나 문자로 보내 주세요.</p>
+      <p>아이 학년과 궁금한 수업을 고르면 보낼 메시지가 만들어집니다. ‘카카오 채널톡으로 상담하기’를 누르면 메시지가 복사되고 채팅창이 열려요. 붙여 넣어 보내 주세요.</p>
     </div>
     <div class="contact-grid">
       <form class="builder" id="builder" novalidate>
@@ -1003,16 +1007,18 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
           <label id="cPrevLabel" for="cPreview">보낼 메시지</label>
           <output class="preview" id="cPreview" for="cGrade cMemo" aria-labelledby="cPrevLabel"></output>
         </div>
-        <div class="btn-row">
+        <div class="c-acts">
           <button class="btn btn-navy" type="button" id="cCopy"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>메시지 복사</button>
           <a class="btn btn-line" id="cSms" href="sms:01098924088">문자로 보내기</a>
+          <a class="btn btn-line" href="tel:01098924088"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>전화하기</a>
+          <a class="btn btn-yellow" id="cKakao" href="https://pf.kakao.com/_SVxaxjb/chat" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>카카오 채널톡으로 상담하기</a>
         </div>
       </form>
       <div>
         <dl class="info">
-          <div><dt>카카오톡 채널</dt><dd><span>카카오톡에서 <span class="nb">‘켈리영어독서학원’을</span> 검색해 주세요.</span><button class="btn btn-yellow btn-sm" type="button" data-copy="켈리영어독서학원" data-copied="채널 이름을 복사했습니다. 카카오톡 검색창에 붙여 넣으세요."><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>채널 이름 복사</button></dd></div>
+          <div><dt>카카오톡 채널</dt><dd><span>채널 <span class="nb">‘켈리영어독서학원’에서</span> 바로 상담할 수 있어요.</span><a class="btn btn-yellow btn-sm" href="https://pf.kakao.com/_SVxaxjb/chat" target="_blank" rel="noopener"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>카카오 채널톡으로 상담하기</a></dd></div>
           <div><dt>상담 전화</dt><dd><a class="tel" href="tel:01098924088">010-9892-4088</a></dd></div>
-          <div><dt>운영 시간</dt><dd><span class="nb">월·수·금 오후 2시 ~ 8시</span><br><span class="nb">화·목 오후 2시 ~ 9시</span></dd></div>
+          <div><dt>운영 시간</dt><dd><span class="nb">월·수·금 오후 2시 ~ 8시</span><span class="nb">화·목 오후 2시 ~ 9시</span></dd></div>
           <div><dt>위치</dt><dd><span>경기 군포시 광정로 70 유공빌딩</span><a href="https://map.naver.com/p/search/켈리영어독서학원" target="_blank" rel="noopener">네이버 지도에서 보기</a></dd></div>
           <div><dt>더 보기</dt><dd class="links"><a href="https://blog.naver.com/berrykong7" target="_blank" rel="noopener">네이버 블로그</a><a href="https://www.instagram.com/kellyenglish_sanbon/" target="_blank" rel="noopener">인스타그램</a><a href="https://daangn.com/kr/local-profile/%EC%BC%88%EB%A6%AC%EC%98%81%EC%96%B4%EB%8F%85%EC%84%9C%ED%95%99%EC%9B%90-aouf2ff5i3ba/" target="_blank" rel="noopener">당근 학부모 후기</a></dd></div>
         </dl>
@@ -1385,6 +1391,9 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     builder.addEventListener('input', refresh);
     builder.addEventListener('change', refresh);
     builder.addEventListener('submit', function (e) { e.preventDefault(); });
+    $('#cKakao').addEventListener('click', function () {
+      copyText(compose(), '메시지를 복사했습니다. 열리는 카카오톡 채팅창에 붙여 넣어 보내 주세요.');
+    });
     $('#cCopy').addEventListener('click', function () {
       copyText(compose(), '메시지를 복사했습니다. 카카오톡 채널이나 문자에 붙여 넣어 보내 주세요.');
     });
