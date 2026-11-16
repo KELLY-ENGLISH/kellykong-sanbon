@@ -215,22 +215,69 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .stage-links{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
 .cur-note{margin-top:34px;max-width:46em;color:var(--ink-soft)}
 .cur-note strong{color:var(--ink)}
-.term{margin-top:clamp(40px,5vw,64px)}
-.term-title{font-family:var(--font-display);font-weight:900;font-size:clamp(1.4rem,2.6vw,1.8rem);letter-spacing:-.03em}
-.term-lead{margin-top:10px;max-width:46em;color:var(--ink-soft)}
-.term-list{list-style:none;margin:24px 0 0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:12px}
-.term-list li{display:flex;flex-direction:column;align-items:flex-start;gap:4px;background:#fff;border-radius:18px;padding:20px 18px;border-top:6px solid var(--navy)}
-.term-list li.sp{background:var(--cream);border-top-color:var(--yellow-deep)}
-.term-when{font-size:.86rem;font-weight:700;color:var(--ink-soft)}
-.term-list strong{font-family:var(--font-display);font-weight:900;font-size:1.22rem;color:var(--navy-deep);letter-spacing:-.02em}
-.term-len{font-size:.84rem;font-weight:700;color:var(--navy-deep);background:var(--paper);border-radius:999px;padding:1px 11px}
-.term-list li.sp .term-len{background:#fff}
-.term-list p{margin-top:8px;font-size:.93rem;line-height:1.55;color:var(--ink-soft)}
-.term-list .btn{margin-top:auto;white-space:normal;text-align:center;height:auto;padding-top:8px;padding-bottom:8px}
-.term-list li.sp p{margin-bottom:12px}
-.term-note{margin-top:18px;max-width:46em;color:var(--ink-soft)}
-@media (max-width:1040px){.term-list{grid-template-columns:repeat(2,minmax(0,1fr))}}
-@media (max-width:520px){.term-list{grid-template-columns:minmax(0,1fr)}}
+.gsys{margin-top:clamp(48px,6vw,80px);display:grid;gap:16px}
+.gsys-head{max-width:48em}
+.gsys-eyebrow{font-size:.8rem;font-weight:800;letter-spacing:.16em;color:var(--yellow-deep)}
+.gsys-title{margin-top:6px;font-family:var(--font-display);font-weight:900;font-size:clamp(1.6rem,3.2vw,2.3rem);letter-spacing:-.03em;color:var(--navy-deep)}
+.gsys-lead{margin-top:12px;color:var(--ink-soft);line-height:1.7}
+.gsys-stats{list-style:none;margin:8px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.gsys-stats li{background:var(--navy-deep);color:#fff;border-radius:18px;padding:18px 22px;display:flex;align-items:center;gap:16px}
+.gsys-stats strong{font-family:var(--font-display);font-weight:900;font-size:2.6rem;line-height:1;color:var(--yellow);white-space:nowrap}
+.gsys-stats small{font-size:1rem;margin-left:3px;color:#fff}
+.gsys-stats span{font-weight:700;font-size:.98rem;line-height:1.4}
+.gsys-card{background:#fff;border-radius:22px;padding:clamp(20px,3vw,32px)}
+.gsys-h{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.12rem;color:var(--navy-deep);margin-bottom:22px}
+.gsys-num{font-family:var(--font-display);font-weight:900;font-size:.95rem;color:var(--navy-deep);background:var(--yellow);border-radius:8px;padding:3px 9px}
+.gsys-cap{margin-top:16px;color:var(--ink-soft);font-size:.95rem}
+.gs-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:end}
+.gs-steps li{display:flex;flex-direction:column;gap:2px;min-width:0}
+.gs-no{font-size:.76rem;font-weight:800;letter-spacing:.08em;color:var(--yellow-deep)}
+.gs-steps strong{font-weight:800;font-size:1.06rem;color:var(--navy-deep);white-space:nowrap}
+.gs-en{font-size:.8rem;color:var(--ink-soft)}
+.gs-bar{margin-top:10px;height:calc(28px + var(--i) * 26px);border-radius:12px 12px 4px 4px;background:color-mix(in srgb,var(--navy) calc(18% + var(--i) * 16%),#e6e9f5)}
+.gs-steps li:last-child .gs-bar{background:var(--navy-deep);box-shadow:inset 0 6px 0 var(--yellow)}
+.gy{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:3fr 3fr 2.3fr 3fr 2.3fr;gap:8px}
+.gy li{display:flex;flex-direction:column;align-items:flex-start;gap:4px;border-radius:16px;padding:16px;min-width:0}
+.gy-term{background:var(--navy);color:#fff}
+.gy-sp{background:var(--cream);box-shadow:inset 0 0 0 2px var(--yellow-deep)}
+.gy-when{font-size:.84rem;font-weight:800;opacity:.85}
+.gy strong{font-family:var(--font-display);font-weight:900;font-size:1.3rem;letter-spacing:-.02em}
+.gy-term strong{color:#fff}
+.gy-sp strong{color:var(--navy-deep);font-size:1.08rem;white-space:nowrap}
+.gy-len{font-size:.8rem;font-weight:700;border-radius:999px;padding:1px 10px}
+.gy-term .gy-len{background:rgba(255,255,255,.16)}
+.gy-sp .gy-len{background:#fff;color:var(--navy-deep)}
+.gy-lv{margin-top:10px;display:flex;flex-wrap:wrap;gap:4px}
+.gy-lv span{font-size:.74rem;font-weight:700;background:#fff;color:var(--navy-deep);border-radius:6px;padding:1px 7px}
+.gy-sp p{margin-top:6px;font-size:.88rem;line-height:1.5;color:var(--ink-soft)}
+.gy-sp .btn{margin-top:auto;white-space:normal;text-align:center;height:auto;padding-top:7px;padding-bottom:7px}
+.gy-sp p{margin-bottom:10px}
+.gt{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
+.gt li{position:relative;display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:14px;background:var(--paper)}
+.gt li:not(:last-child)::after{content:"";position:absolute;right:-20px;top:50%;width:12px;height:12px;border-top:3px solid var(--navy);border-right:3px solid var(--navy);transform:translateY(-50%) rotate(45deg)}
+.gt-k{font-size:.8rem;font-weight:700;color:var(--ink-soft)}
+.gt strong{font-weight:800;color:var(--navy-deep)}
+.gt-out{background:var(--yellow)!important}
+.gt-out .gt-k{color:var(--navy-deep)}
+@media (max-width:900px){
+  .gsys-stats li{flex-direction:column;align-items:flex-start;gap:6px;padding:16px}
+  .gy{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .gy li:first-child{grid-column:span 2}
+}
+@media (max-width:600px){
+  .gsys-stats{gap:8px}
+  .gsys-stats strong{font-size:2rem}
+  .gsys-stats span{font-size:.84rem}
+  .gs-steps{grid-template-columns:minmax(0,1fr);gap:8px}
+  .gs-steps li{display:grid;grid-template-columns:4.2em 6.6em 1fr;align-items:center;column-gap:8px}
+  .gs-en{display:none}
+  .gs-bar{margin:0;height:26px;width:calc(var(--i) * 20%);border-radius:4px 12px 12px 4px}
+  .gs-steps li:last-child .gs-bar{box-shadow:inset -6px 0 0 var(--yellow)}
+  .gy{grid-template-columns:minmax(0,1fr)}
+  .gy li:first-child{grid-column:auto}
+  .gt{grid-template-columns:minmax(0,1fr);gap:22px}
+  .gt li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%) rotate(135deg)}
+}
 @media (max-width:860px){
   .cur-grid{grid-template-columns:minmax(0,1fr);align-items:stretch}
   .shelf{height:330px;gap:6px;padding:0 6px}
@@ -632,17 +679,50 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     </div>
     <p class="cur-note"><strong>모든 수업은 1:1 맞춤으로 진행하고, Speaking 훈련이 함께 이루어집니다.</strong> 아이의 현재 위치는 3개월에 한 번, 전 원생이 함께 보는 SR TEST로 확인합니다.</p>
 
-    <div class="term">
-      <h3 class="term-title">문법 수업과 방학 특강</h3>
-      <p class="term-lead">문법은 단계별 필수 수업입니다. 정규 과정은 12주씩 1년에 세 번, 방학에는 4주 특강이 열립니다.</p>
-      <ol class="term-list">
-        <li><span class="term-when">1월 ~ 3월</span><strong>정규 1차</strong><span class="term-len">12주</span><p>Starter부터 중3 문법까지, 내 단계에 맞춰 듣습니다.</p></li>
-        <li><span class="term-when">4월 ~ 6월</span><strong>정규 2차</strong><span class="term-len">12주</span><p>Starter부터 중3 문법까지, 내 단계에 맞춰 듣습니다.</p></li>
-        <li class="sp"><span class="term-when">여름방학</span><strong>Summer Class</strong><span class="term-len">4주</span><p>필수 역량 강화 특강. 토론, 발표, 영자신문 등.</p><button class="btn btn-line btn-sm" type="button" data-lab="ubi">UBI Lab 워크시트</button></li>
-        <li><span class="term-when">8월 ~ 10월</span><strong>정규 3차</strong><span class="term-len">12주</span><p>Starter부터 중3 문법까지, 내 단계에 맞춰 듣습니다.</p></li>
-        <li class="sp"><span class="term-when">겨울방학</span><strong>Winter Class</strong><span class="term-len">4주</span><p>새 학기 준비 특강. 영어 듣기, 구문독해, 수행평가.</p></li>
-      </ol>
-      <p class="term-note">첫 수업과 마지막 수업에 같은 테스트를 봅니다. 아이의 실력이 얼마나 자랐는지 수치로 확인할 수 있습니다.</p>
+    <div class="gsys">
+      <div class="gsys-head">
+        <p class="gsys-eyebrow">KELLY GRAMMAR SYSTEM</p>
+        <h3 class="gsys-title">체계적인 문법 수업 &amp; 방학 특강</h3>
+        <p class="gsys-lead">문법은 모든 단계의 필수 수업입니다. 5단계 레벨로 나눈 문법 수업을 1년에 세 번, 3개월씩 집중해서 진행합니다. 7월과 12월에는 다양한 특강으로 독서 수업에서 다룰 수 없었던 영역의 역량을 집중적으로 키웁니다.</p>
+      </div>
+      <ul class="gsys-stats">
+        <li><strong>5<small>단계</small></strong><span>레벨별 문법 반</span></li>
+        <li><strong>3<small>회</small></strong><span>정규 과정 · 각 3개월</span></li>
+        <li><strong>2<small>회</small></strong><span>7월 · 12월 집중 특강</span></li>
+      </ul>
+
+      <div class="gsys-card">
+        <h4 class="gsys-h"><span class="gsys-num">01</span>5단계 레벨 맞춤 문법</h4>
+        <ol class="gs-steps">
+          <li style="--i:1"><span class="gs-no">STEP 1</span><strong>생애 첫 문법</strong><span class="gs-en">First Grammar</span><span class="gs-bar" aria-hidden="true"></span></li>
+          <li style="--i:2"><span class="gs-no">STEP 2</span><strong>STARTER</strong><span class="gs-en">Starter Grammar</span><span class="gs-bar" aria-hidden="true"></span></li>
+          <li style="--i:3"><span class="gs-no">STEP 3</span><strong>중1 문법</strong><span class="gs-en">Grade 7</span><span class="gs-bar" aria-hidden="true"></span></li>
+          <li style="--i:4"><span class="gs-no">STEP 4</span><strong>중2 문법</strong><span class="gs-en">Grade 8</span><span class="gs-bar" aria-hidden="true"></span></li>
+          <li style="--i:5"><span class="gs-no">STEP 5</span><strong>중3 문법</strong><span class="gs-en">Grade 9</span><span class="gs-bar" aria-hidden="true"></span></li>
+        </ol>
+        <p class="gsys-cap">아이의 현재 수준에 맞는 반에서 시작해, 한 단계씩 차근차근 올라갑니다.</p>
+      </div>
+
+      <div class="gsys-card">
+        <h4 class="gsys-h"><span class="gsys-num">02</span>1년 과정 한눈에 보기</h4>
+        <ol class="gy">
+          <li class="gy-term"><span class="gy-when">1월 ~ 3월</span><strong>정규 1차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
+          <li class="gy-term"><span class="gy-when">4월 ~ 6월</span><strong>정규 2차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
+          <li class="gy-sp"><span class="gy-when">7월</span><strong>Summer Class</strong><span class="gy-len">4주 특강</span><p>필수 역량 강화<br>토론 · 발표 · 영자신문</p><button class="btn btn-line btn-sm" type="button" data-lab="ubi">UBI Lab 워크시트</button></li>
+          <li class="gy-term"><span class="gy-when">8월 ~ 10월</span><strong>정규 3차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
+          <li class="gy-sp"><span class="gy-when">12월</span><strong>Winter Class</strong><span class="gy-len">4주 특강</span><p>새 학기 준비<br>영어 듣기 · 구문독해 · 수행평가</p></li>
+        </ol>
+      </div>
+
+      <div class="gsys-card">
+        <h4 class="gsys-h"><span class="gsys-num">03</span>시작과 끝, 같은 테스트로 확인합니다</h4>
+        <ol class="gt">
+          <li><span class="gt-k">첫 수업</span><strong>진단 테스트</strong></li>
+          <li><span class="gt-k">3개월</span><strong>레벨 맞춤 수업</strong></li>
+          <li><span class="gt-k">마지막 수업</span><strong>같은 테스트</strong></li>
+          <li class="gt-out"><span class="gt-k">결과</span><strong>성장을 수치로 확인</strong></li>
+        </ol>
+      </div>
     </div>
   </div>
 </section>
