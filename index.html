@@ -340,7 +340,9 @@ button.vcard:hover .vplay{background:#fff}
 .emo{aspect-ratio:1;padding:4px;border:0;border-radius:16px;background:var(--paper);cursor:pointer}
 .emo img{display:block;width:100%;height:100%}
 .emo:hover{background:var(--cream)}
-.emo[aria-pressed="true"]{background:var(--cream);box-shadow:inset 0 0 0 2px var(--yellow-deep)}
+.emo{position:relative;transition:transform .18s ease-out,box-shadow .18s ease-out}
+.emo[aria-pressed="true"]{z-index:5;background:var(--cream);transform:translateX(var(--dx,0px)) scale(2);box-shadow:0 0 0 1.5px var(--yellow-deep),0 14px 30px rgba(15,20,48,.28);cursor:zoom-out}
+@media (prefers-reduced-motion:reduce){.emo{transition:none}}
 .emo-cap{margin-top:14px;min-height:1.7em;font-size:.95rem;color:var(--ink-soft)}
 @media (max-width:860px){
   .kelly-grid{grid-template-columns:minmax(0,1fr)}
@@ -766,12 +768,12 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     <div>
       <h2 id="kelly-title">켈리콩을 소개합니다</h2>
       <blockquote>“책으로 실력을 쌓은 아이는 스스로 충분히 할 수 있어요.”</blockquote>
-      <p class="kelly-p">켈리영어독서학원은 2011년 산본에 문을 열었습니다. 원장 선생님을 닮은 캐릭터 <span class="nb">‘켈리콩’은</span> 학원 소식 영상과 숙제 알림에 등장합니다.</p>
+      <p class="kelly-p">켈리영어독서학원은 2018년 산본에 문을 열었습니다. 원장 선생님을 닮은 캐릭터 <span class="nb">‘켈리콩’은</span> 학원 소식 영상과 숙제 알림에 등장합니다.</p>
       <div class="emo-box">
         <h3>켈리콩 이모티콘 47종</h3>
         <div class="emo-tabs" id="emoTabs" role="group" aria-label="이모티콘 종류"></div>
         <div class="emo-grid" id="emoGrid"></div>
-        <p class="emo-cap" id="emoCap" aria-live="polite">이모티콘을 누르면 움직입니다.</p>
+        <p class="emo-cap" id="emoCap" aria-live="polite">이모티콘을 누르면 크게 볼 수 있습니다.</p>
       </div>
     </div>
   </div>
@@ -1126,16 +1128,27 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
 
   /* ---- 이모티콘 ---- */
   var emoGrid = $('#emoGrid'), emoTabs = $('#emoTabs'), emoCap = $('#emoCap');
+  var EMO_ZOOM = 2;
+  /* 커진 이모티콘이 화면 밖으로 나가지 않게 옆으로 살짝 옮긴다 */
+  function placeEmo(btn) {
+    btn.style.removeProperty('--dx');
+    var r = btn.getBoundingClientRect(), w = r.width;
+    var cx = r.left + w / 2, half = w * EMO_ZOOM / 2, vw = document.documentElement.clientWidth, m = 8, dx = 0;
+    if (cx - half < m) dx = m - (cx - half);
+    else if (cx + half > vw - m) dx = vw - m - (cx + half);
+    btn.style.setProperty('--dx', Math.round(dx) + 'px');
+  }
+  var EMO_HINT = '이모티콘을 누르면 크게 볼 수 있습니다.';
   function emoSrc(n, moving) { return 'assets/emo/e' + n + (moving ? '' : '-s') + '.webp'; }
   function renderEmos(catId) {
     var c = EMO_CATS.filter(function (x) { return x.id === catId; })[0] || EMO_CATS[0];
     var html = '';
     for (var n = c.from; n <= c.to; n++) {
-      html += '<button class="emo" type="button" data-n="' + pad(n) + '" aria-pressed="false" aria-label="' + esc(EMOS[n - 1]) + ' 이모티콘 움직이기">' +
+      html += '<button class="emo" type="button" data-n="' + pad(n) + '" aria-pressed="false" aria-label="' + esc(EMOS[n - 1]) + ' 이모티콘 크게 보기">' +
         '<img src="' + emoSrc(pad(n), false) + '" alt="" loading="lazy" width="360" height="360"></button>';
     }
     emoGrid.innerHTML = html;
-    emoCap.textContent = '이모티콘을 누르면 움직입니다.';
+    emoCap.textContent = EMO_HINT;
     $$('.chip', emoTabs).forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.cat === c.id ? 'true' : 'false'); });
   }
   function setEmo(btn, on) {
@@ -1151,8 +1164,14 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
       var b = e.target.closest('.emo'); if (!b) return;
       var on = b.getAttribute('aria-pressed') !== 'true';
       $$('.emo[aria-pressed="true"]', emoGrid).forEach(function (x) { setEmo(x, false); });
+      if (on) placeEmo(b);
       setEmo(b, on);
-      emoCap.textContent = on ? '“' + EMOS[parseInt(b.dataset.n, 10) - 1] + '”' : '이모티콘을 누르면 움직입니다.';
+      emoCap.textContent = on ? '“' + EMOS[parseInt(b.dataset.n, 10) - 1] + '”' : EMO_HINT;
+    });
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.emo')) return;
+      $$('.emo[aria-pressed="true"]', emoGrid).forEach(function (x) { setEmo(x, false); });
+      emoCap.textContent = EMO_HINT;
     });
     if (!reduceMotion && window.matchMedia && window.matchMedia('(hover: hover)').matches) {
       emoGrid.addEventListener('pointerover', function (e) {
