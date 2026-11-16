@@ -216,7 +216,7 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .report{margin:22px 0 0;display:flex;gap:16px;align-items:flex-start;padding:14px;border-radius:18px;background:var(--paper)}
 .report-thumb{flex:none;width:112px;padding:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;cursor:zoom-in;transition:transform .15s ease}
 .report-thumb:hover{transform:scale(1.03)}
-.report-thumb img{display:block;width:100%;height:auto}
+.report-thumb img{display:block;width:100%;height:auto;aspect-ratio:1200/1705;object-fit:cover;object-position:top}
 .report figcaption{display:flex;flex-direction:column;align-items:flex-start;gap:5px;min-width:0;font-size:.94rem;line-height:1.55;color:var(--ink-soft)}
 .report figcaption strong{font-size:1.02rem;color:var(--navy-deep)}
 .report-tag{font-size:.78rem;font-weight:700;color:var(--navy-deep);background:var(--yellow);border-radius:999px;padding:1px 10px}
@@ -224,7 +224,7 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .rdlg{background:transparent;max-width:none;max-height:none;width:min(760px,100% - 24px);overflow:visible}
 .rdlg .xbtn{display:flex;width:fit-content;margin:0 0 10px auto;color:#fff}
 .rdlg-scroll{max-height:calc(100dvh - 110px);overflow:auto;border-radius:14px;background:#fff}
-.rdlg img{display:block;width:100%;height:auto}
+.rdlg img{display:block;width:100%;height:auto;aspect-ratio:auto}
 .stage-links{margin-top:24px;display:flex;flex-wrap:wrap;gap:8px}
 .cur-note{margin-top:34px;max-width:46em;color:var(--ink-soft)}
 .cur-note strong{color:var(--ink)}
@@ -656,6 +656,15 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <li>줄거리를 더 길고 자세하게 요약합니다.</li>
             <li>선생님의 1:1 첨삭으로 문장을 다듬습니다.</li>
           </ul>
+          <figure class="report">
+            <button class="report-thumb" type="button" data-report="b" aria-label="Level B 북리포트 작성 예시 크게 보기"><img src="assets/img/report-b.webp?v=1116b" width="1201" height="1702" loading="lazy" alt="Level B 다독 북리포트 작성 예시. 문법을 활용한 문장과 처음·중간·끝 초안, 선생님의 빨간펜 첨삭이 채워져 있다."></button>
+            <figcaption>
+              <span class="report-tag">작성 예시</span>
+              <strong>Level B 다독 북리포트</strong>
+              <span>켈리가 직접 제작한 북리포트입니다. Level B에서는 who/which, when/while 같은 문법으로 문장을 넓히고, 선생님과 함께 작문한 뒤 처음·중간·끝 1차 초안을 씁니다. 스스로 오류를 찾아 고치며 글의 완성도를 높여 갑니다.</span>
+              <button class="btn btn-line btn-sm" type="button" data-report="b">크게 보기</button>
+            </figcaption>
+          </figure>
         </article>
         <article class="stage-panel" id="st-c" data-stage="c" role="tabpanel" aria-labelledby="sp-c">
           <div class="stage-top"><h3>Level C</h3><span class="pill y">중2 문법</span></div>
@@ -671,6 +680,15 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <li>책에 대한 내 생각을 근거와 함께 씁니다.</li>
             <li>책에 대해 묻고 답하며 생각을 영어로 말합니다.</li>
           </ul>
+          <figure class="report">
+            <button class="report-thumb" type="button" data-report="c" aria-label="Level C 북리포트 작성 예시 크게 보기"><img src="assets/img/report-c.webp?v=1116b" width="1200" height="3419" loading="lazy" alt="Level C 정독 북리포트 작성 예시 2장. 줄거리 요약과 의견 에세이 초안, 고쳐 쓰기, 선생님의 피드백이 채워져 있다."></button>
+            <figcaption>
+              <span class="report-tag">작성 예시</span>
+              <strong>Level C 정독 북리포트</strong>
+              <span>켈리가 직접 제작한 북리포트입니다. Level C에서는 책을 요약한 뒤, 주장 → 근거 → 예시 → 결론의 틀에 맞춰 나의 의견을 에세이로 씁니다. 선생님의 피드백을 받아 다시 고쳐 쓰며 논리적인 글쓰기를 완성합니다. (2장)</span>
+              <button class="btn btn-line btn-sm" type="button" data-report="c">크게 보기</button>
+            </figcaption>
+          </figure>
         </article>
         <article class="stage-panel" id="st-d" data-stage="d" role="tabpanel" aria-labelledby="sp-d">
           <div class="stage-top"><h3>Level D</h3><span class="pill y">중3 문법</span></div>
@@ -686,6 +704,15 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <li>셰익스피어와 고전 문학, 마이클 샌델의 『Justice』 원서 특강까지 나아갑니다.</li>
             <li>내 생각을 한 편의 에세이로 완성합니다.</li>
           </ul>
+          <figure class="report">
+            <button class="report-thumb" type="button" data-report="d" aria-label="Level D 북리포트 작성 예시 크게 보기"><img src="assets/img/report-d.webp?v=1116b" width="1188" height="1678" loading="lazy" alt="Level D 북리포트 작성 예시. 정의를 주제로 한 한 편의 에세이와 선생님의 빨간펜 첨삭, 코멘트가 채워져 있다."></button>
+            <figcaption>
+              <span class="report-tag">작성 예시</span>
+              <strong>Level D Final 북리포트</strong>
+              <span>켈리가 직접 제작한 북리포트입니다. Level D에서는 소설과 논픽션, Justice 특강에서 다룬 주제를 바탕으로 주장과 근거, 반론까지 갖춘 한 편의 완성된 에세이를 쓰고, 선생님의 첨삭으로 다듬습니다.</span>
+              <button class="btn btn-line btn-sm" type="button" data-report="d">크게 보기</button>
+            </figcaption>
+          </figure>
           <div class="stage-links">
             <button class="btn btn-line btn-sm" type="button" data-lab="trolley">Trolley Lab 워크시트</button>
             <button class="btn btn-line btn-sm" type="button" data-lab="justice">Justice Lab 워크시트</button>
