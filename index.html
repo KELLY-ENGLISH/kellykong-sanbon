@@ -173,31 +173,6 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
   .newsline{margin-top:34px;border-radius:22px;padding:10px 16px 12px 10px;flex-wrap:wrap;gap:6px 12px}
 }
 
-/* ---------- 왜 내신을 안 봐주나 ---------- */
-.why-grid{display:grid;grid-template-columns:minmax(0,6fr) minmax(0,5fr);gap:clamp(32px,6vw,84px);align-items:center}
-.why-by{margin-top:16px;color:var(--ink-soft);font-size:.98rem}
-.prose{margin-top:30px;display:grid;gap:18px;max-width:34em;font-size:1.06rem}
-.prose .hl{font-weight:700}
-.why-fact{margin-top:30px;padding-top:24px;border-top:2px solid var(--navy);max-width:34em;font-size:1.06rem}
-.year{position:relative;overflow:hidden;background:var(--paper);border-radius:26px;padding:clamp(22px,3vw,34px) clamp(18px,3vw,34px) 0}
-.year-row + .year-row{margin-top:30px}
-.year-label{font-weight:700;font-size:1.02rem;margin-bottom:12px}
-.months{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:4px}
-.months li{display:flex;flex-direction:column;align-items:center;gap:6px;font-size:.74rem;color:var(--ink-soft);font-variant-numeric:tabular-nums;line-height:1}
-.months i{display:flex;align-items:center;justify-content:center;width:100%;height:76px;border-radius:5px 5px 2px 2px;background:var(--navy);font-style:normal}
-.months .off i{background:transparent;border:2px dashed var(--red);color:var(--red);font-weight:700;font-size:.78rem;writing-mode:vertical-rl;letter-spacing:.1em}
-.months.go i{background:var(--yellow)}
-.year-foot{display:flex;align-items:flex-end;justify-content:space-between;gap:10px;margin-top:22px;min-height:150px}
-.year-sum{display:grid;gap:6px;padding-bottom:28px;font-size:.98rem}
-.year-sum b{font-family:var(--font-display);font-weight:900;font-size:1.5rem;letter-spacing:-.02em}
-.year-sticker{width:150px;flex:none}
-@media (max-width:860px){
-  .why-grid{grid-template-columns:minmax(0,1fr)}
-  .months i{height:60px}
-  .year-sticker{width:128px}
-  .year-foot{min-height:128px}
-}
-
 /* ---------- 커리큘럼: 책등 ---------- */
 .cur{background:var(--paper)}
 .cur-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,6fr);gap:clamp(26px,4.4vw,60px);align-items:end}
@@ -478,7 +453,6 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     <a class="brand" href="#main"><svg aria-hidden="true"><use href="#i-logo"/></svg>켈리영어독서학원</a>
     <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="nav"><svg class="ic" aria-hidden="true"><use href="#i-menu"/></svg>메뉴</button>
     <nav class="nav" id="nav" aria-label="주요 메뉴">
-      <a href="#why">교육 철학</a>
       <a href="#curriculum">커리큘럼</a>
       <a href="#news">이달의 소식</a>
       <a href="#videos">영상</a>
@@ -532,43 +506,6 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
       <span>파닉스 수업 무료체험, 11월 30일까지 신청받습니다</span>
       <span class="newsline-go">자세히 보기</span>
     </a>
-  </div>
-</section>
-
-<!-- ================= 교육 철학 ================= -->
-<section class="sec why" id="why" aria-labelledby="why-title">
-  <div class="wrap why-grid">
-    <div>
-      <h2 id="why-title">“영어학원인데요,<br>내신은 안 봐줘요.”</h2>
-      <p class="why-by">켈리 원장의 영상 ‘어느 영어학원 원장의 <span class="nb">고백’은</span> 이 말로 시작합니다.</p>
-      <div class="prose">
-        <p>고전 한 권에 푹 빠져 있던 아이도 시험 3주 전이면 책을 덮습니다. 시험이 끝나고 며칠 쉰 뒤 다시 펴 보면, 이야기는 이미 끊겨 있습니다.</p>
-        <p><span class="hl">이렇게 멈추는 일이 1년에 네 번, 3년이면 열두 번입니다.</span></p>
-        <p>켈리에서는 시험 기간에도 원서와 문법, 어휘를 멈추지 않고 더 깊이 읽어 나갑니다. 그렇게 읽어 온 아이에게 교과서는 짧은 글이고, 시험 준비는 아이 스스로 해냅니다.</p>
-      </div>
-      <p class="why-fact">내신을 봐주지 않는 학원인데도 <strong>원생 10명 중 3명은 중학생</strong>입니다.</p>
-    </div>
-    <figure class="year" aria-label="1년 동안 읽기가 멈추는 횟수 비교">
-      <div class="year-row">
-        <p class="year-label">시험 때마다 책을 덮는 1년</p>
-        <ol class="months" aria-label="4월, 7월, 10월, 12월에 읽기가 멈춥니다">
-          <li><i></i>1</li><li><i></i>2</li><li><i></i>3</li><li class="off"><i>멈춤</i>4</li><li><i></i>5</li><li><i></i>6</li><li class="off"><i>멈춤</i>7</li><li><i></i>8</li><li><i></i>9</li><li class="off"><i>멈춤</i>10</li><li><i></i>11</li><li class="off"><i>멈춤</i>12</li>
-        </ol>
-      </div>
-      <div class="year-row">
-        <p class="year-label">켈리에서 보내는 1년</p>
-        <ol class="months go" aria-label="열두 달 내내 읽습니다">
-          <li><i></i>1</li><li><i></i>2</li><li><i></i>3</li><li><i></i>4</li><li><i></i>5</li><li><i></i>6</li><li><i></i>7</li><li><i></i>8</li><li><i></i>9</li><li><i></i>10</li><li><i></i>11</li><li><i></i>12</li>
-        </ol>
-      </div>
-      <div class="year-foot">
-        <p class="year-sum"><span>읽기가 멈추는 달</span><b>4번에서 0번으로</b></p>
-        <picture class="sticker year-sticker">
-          <source media="(prefers-reduced-motion: reduce)" srcset="assets/emo/e32-s.webp">
-          <img src="assets/emo/e32.webp" width="360" height="360" loading="lazy" alt="책을 펴 든 켈리콩 캐릭터. 책 읽자~">
-        </picture>
-      </div>
-    </figure>
   </div>
 </section>
 
