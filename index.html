@@ -1095,18 +1095,26 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
       desc: '11월 한 달간 열리는 파닉스 수업 무료체험 안내',
       src: 'assets/video/kellykong-2026-11-phonics-trial.mp4',
       poster: 'assets/video/kellykong-2026-11-phonics-trial.webp' },
-    { id: 'confession', cat: 'story', len: '60초', shape: 'tall', emo: '35',
-      title: '어느 영어학원 원장의 고백',
-      desc: '내신을 안 봐주는 이유를 1분 카툰으로', src: '', poster: '' },
-    { id: 'justice-class', cat: 'class', len: '39초', shape: 'wide', emo: '17',
-      title: 'Justice 특강 가상 교실',
-      desc: '읽고, 탐구하고, 토론하고, 나만의 정의를 세우는 네 단계', src: '', poster: '' },
-    { id: 'kelly-times-class', cat: 'class', len: '32초', shape: 'wide', emo: '32',
-      title: '영자신문 + 토론 가상 교실',
-      desc: '기사 읽기부터 찬반 토론, 스피치까지', src: '', poster: '' },
-    { id: 'justice-deck', cat: 'class', len: '32초', shape: 'wide', emo: '08',
-      title: 'Justice 특강 슬라이드 맛보기',
-      desc: '움직이는 그림과 영어 음성으로 넘기는 수업 슬라이드', src: '', poster: '' }
+    { id: 'confession', cat: 'story', len: '60초', shape: 'tall',
+      title: '어느 영어학원장의 고백',
+      desc: '내신을 안 봐주는 이유를 1분 카툰으로',
+      src: 'assets/video/kelly-confession.mp4',
+      poster: 'assets/video/kelly-confession.webp' },
+    { id: 'the-giver', cat: 'class', len: '50초', shape: 'tall',
+      title: 'The Giver 12월 원서특강',
+      desc: '완벽한 사회일까? 정답 없는 질문 앞에서 생각하는 힘을 키웁니다',
+      src: 'assets/video/the-giver-class.mp4',
+      poster: 'assets/video/the-giver-class.webp' },
+    { id: 'justice-class', cat: 'class', len: '32초', shape: 'wide',
+      title: 'Justice 12월 원서특강',
+      desc: '트롤리 딜레마로 묻는 질문, 무엇이 옳은 일일까?',
+      src: 'assets/video/justice-class.mp4',
+      poster: 'assets/video/justice-class.webp', thumb: 'assets/video/justice-class-card.webp' },
+    { id: 'kelly-times-class', cat: 'class', len: '32초', shape: 'wide',
+      title: '영자신문 12월 특강',
+      desc: '기사 읽기부터 찬반 토론, 영어 스피치까지',
+      src: 'assets/video/kelly-times-class.mp4',
+      poster: 'assets/video/kelly-times-class.webp', thumb: 'assets/video/kelly-times-class-card.webp' }
   ];
   var VCATS = { news: '이달의 소식', class: '수업 미리보기', story: '원장 이야기' };
 
@@ -1210,7 +1218,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     var text = '<span class="vcat">' + esc(VCATS[v.cat] || '') + '</span><strong>' + esc(v.title) + '</strong><span class="vdesc">' + esc(v.desc) + '</span>';
     if (v.src) {
       return '<button class="vcard" type="button" data-video="' + esc(v.id) + '" data-cat="' + esc(v.cat) + '" aria-label="' + esc(v.title) + ' 영상 재생, ' + esc(v.len) + '">' +
-        '<span class="vthumb"><img class="vposter" src="' + esc(v.poster) + '" alt="" loading="lazy">' +
+        '<span class="vthumb"><img class="vposter" src="' + esc(v.thumb || v.poster) + '" alt="" loading="lazy">' +
         '<span class="vplay"><svg aria-hidden="true"><use href="#i-play"/></svg></span><span class="vlen">' + esc(v.len) + '</span></span>' + text + '</button>';
     }
     return '<div class="vcard" data-cat="' + esc(v.cat) + '">' +
