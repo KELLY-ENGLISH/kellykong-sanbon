@@ -139,13 +139,20 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .page-r img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 0;display:block}
 .page-r::after{content:"";position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg,var(--paper),rgba(245,244,239,0) 10%,rgba(245,244,239,0) 90%,var(--paper)),linear-gradient(180deg,var(--paper),rgba(245,244,239,0) 8%)}
 .plate-cap{position:absolute;right:18px;bottom:18px;z-index:1;background:#fff;color:var(--navy-deep);font-weight:700;font-size:.9rem;padding:5px 15px;border-radius:999px}
-.hero h1{font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1.2}
+.hero-eyebrow{display:inline-flex;align-self:flex-start;align-items:center;gap:8px;margin-bottom:18px;padding:5px 14px 5px 10px;border-radius:999px;background:var(--navy);color:#fff;font-size:.82rem;font-weight:700;letter-spacing:.04em}
+.hero-eyebrow::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--yellow)}
+.hero h1{font-size:clamp(1.6rem,3.6vw,2.8rem);line-height:1.25}
+.hero h1 .hl{display:inline;white-space:nowrap;background:linear-gradient(transparent 62%,rgba(255,213,30,.75) 62%,rgba(255,213,30,.75) 92%,transparent 92%)}
 @supports (container-type:inline-size){.hero h1{font-size:clamp(1.5rem,9.2cqi,2.8rem)}}
-.hero-points{list-style:none;margin:22px 0 0;padding:0;display:grid;gap:10px;font-size:1.02rem;line-height:1.55;color:var(--ink-soft)}
-.hero-points li{display:flex;gap:10px}
-.hero-points strong{color:var(--navy-deep)}
-.hp-ico{flex:none;width:1.4em;text-align:center}
-.hero-sub{margin-top:20px;font-weight:700;font-size:clamp(1.05rem,1.7vw,1.2rem);line-height:1.5;letter-spacing:-.015em}
+.hero-sub{position:relative;margin-top:clamp(22px,3vw,30px);padding-left:18px;border-left:4px solid var(--yellow);color:var(--ink-soft);font-size:clamp(1.02rem,1.6vw,1.16rem);line-height:1.7;letter-spacing:-.01em}
+.hero-sub strong{display:block;margin-top:4px;color:var(--navy-deep);font-weight:800;font-size:1.08em}
+.hero-stats{list-style:none;margin:clamp(24px,3vw,32px) 0 0;padding:16px 0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));border-top:1.5px solid var(--line);border-bottom:1.5px solid var(--line)}
+.hero-stats li{display:flex;flex-direction:column;gap:2px;padding:0 12px;min-width:0}
+.hero-stats li:first-child{padding-left:0}
+.hero-stats li + li{border-left:1.5px solid var(--line)}
+.hero-stats strong{font-family:var(--font-display);font-weight:900;font-size:clamp(1.5rem,2.6vw,2rem);line-height:1.1;color:var(--navy-deep);letter-spacing:-.02em}
+.hero-stats small{font-family:var(--font-body,inherit);font-size:.5em;font-weight:800;margin-left:2px}
+.hero-stats span{font-size:.82rem;color:var(--ink-soft);line-height:1.4}
 .hero-lead{margin-top:12px;color:var(--ink-soft);font-size:1.03rem;max-width:30em}
 .hero .btn-row{margin-top:28px}
 .where{margin-top:auto;padding:26px 0 30px;max-width:calc(100% - 190px);display:grid;gap:6px;font-size:.93rem;line-height:1.5}
@@ -674,13 +681,14 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     <div class="book">
       <div class="page page-l">
         <div class="page-l-in">
-          <h1 id="hero-title"><span class="nb">생각하고, 쓰고, 말하는</span><br><span class="nb">켈리영어독서학원</span></h1>
-          <ul class="hero-points">
-            <li><span class="hp-ico" aria-hidden="true">📖</span><span><strong>읽고</strong> — 좋은 책 한 권으로, 맥락 속에서 단어와 문장을 만납니다.</span></li>
-            <li><span class="hp-ico" aria-hidden="true">✍️</span><span><strong>쓰고</strong> — 문장을 넓히고 줄거리를 요약하며, 선생님의 1:1 첨삭으로 다듬습니다.</span></li>
-            <li><span class="hp-ico" aria-hidden="true">💬</span><span><strong>말하고</strong> — 책에 대해 묻고 답하는 1:1 Speaking Check-up으로 내 생각을 영어로 꺼냅니다.</span></li>
+          <p class="hero-eyebrow">산본 원서 독서 · SINCE 2018</p>
+          <h1 id="hero-title"><span class="hl">생각하고, 쓰고, 말하는</span><br><span class="nb">켈리영어독서학원</span></h1>
+          <p class="hero-sub">한 권의 책이 한 문장이 되고,<br>한 문장이 내 생각이 될 때까지.<strong>켈리가 함께합니다.</strong></p>
+          <ul class="hero-stats">
+            <li><strong>2,000<small>권</small></strong><span>원서 · 맞춤 퀴즈</span></li>
+            <li><strong>1:1</strong><span>맞춤 수업</span></li>
+            <li><strong>5<small>단계</small></strong><span>파닉스 ~ 고전</span></li>
           </ul>
-          <p class="hero-sub">한 권의 책이 한 문장이 되고,<br>한 문장이 내 생각이 될 때까지. <span class="nb">켈리가 함께합니다.</span></p>
           <div class="btn-row">
             <a class="btn btn-navy" href="#contact">상담 문의하기</a>
             <a class="btn btn-line" href="#lab">퀴즈시트 보기</a>
