@@ -254,7 +254,7 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .gs-steps strong{font-weight:800;font-size:1.06rem;color:var(--navy-deep);white-space:nowrap}
 .gs-en{font-size:.8rem;color:var(--ink-soft)}
 .gs-bar{margin-top:10px;height:calc(28px + var(--i) * 26px);border-radius:12px 12px 4px 4px;background:color-mix(in srgb,var(--navy) calc(18% + var(--i) * 16%),#e6e9f5)}
-.gs-steps li:last-child .gs-bar{background:var(--navy-deep);box-shadow:inset 0 6px 0 var(--yellow)}
+.gs-steps li:last-child .gs-bar{background:var(--navy-deep)}
 .gy{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:3fr 3fr 2.3fr 3fr 2.3fr;gap:8px}
 .gy li{display:flex;flex-direction:column;align-items:flex-start;gap:4px;border-radius:16px;padding:16px;min-width:0}
 .gy-term{background:var(--navy);color:#fff}
@@ -271,6 +271,16 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .gy-sp p{margin-top:6px;font-size:.88rem;line-height:1.5;color:var(--ink-soft)}
 .gy-sp .btn{margin-top:auto;white-space:normal;text-align:center;height:auto;padding-top:7px;padding-bottom:7px}
 .gy-sp p{margin-bottom:10px}
+.gy li{position:relative;transition:transform .2s ease,opacity .2s ease,box-shadow .2s ease}
+.gy-now{display:inline-flex;align-items:center;gap:6px;margin-bottom:6px;font-size:.78rem;font-weight:800;color:var(--navy-deep);background:var(--yellow);border-radius:999px;padding:3px 11px 3px 9px}
+.gy-now::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
+.gy.has-now li:not(.now){opacity:.55}
+.gy li.now{opacity:1;transform:translateY(-6px);box-shadow:0 0 0 3px var(--yellow),0 14px 28px rgba(25,34,79,.22)}
+.gy-sp.now{box-shadow:0 0 0 3px var(--navy),0 14px 28px rgba(25,34,79,.2)}
+.gy li.next .gy-now{background:#fff;box-shadow:inset 0 0 0 2px var(--navy)}
+.gy li.next .gy-now::before{background:var(--navy)}
+@media (prefers-reduced-motion:no-preference){.gy-now::before{animation:gyPulse 1.6s ease-in-out infinite}}
+@keyframes gyPulse{0%,100%{opacity:1}50%{opacity:.25}}
 .gt{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
 .gt li{position:relative;display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:14px;background:var(--paper)}
 .gt li:not(:last-child)::after{content:"";position:absolute;right:-20px;top:50%;width:12px;height:12px;border-top:3px solid var(--navy);border-right:3px solid var(--navy);transform:translateY(-50%) rotate(45deg)}
@@ -291,7 +301,6 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
   .gs-steps li{display:grid;grid-template-columns:4.2em 6.6em 1fr;align-items:center;column-gap:8px}
   .gs-en{display:none}
   .gs-bar{margin:0;height:26px;width:calc(var(--i) * 20%);border-radius:4px 12px 12px 4px}
-  .gs-steps li:last-child .gs-bar{box-shadow:inset -6px 0 0 var(--yellow)}
   .gy{grid-template-columns:minmax(0,1fr)}
   .gy li:first-child{grid-column:auto}
   .gt{grid-template-columns:minmax(0,1fr);gap:22px}
@@ -884,11 +893,11 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
       <div class="gsys-card">
         <h4 class="gsys-h"><span class="gsys-num">02</span>1년 과정 한눈에 보기</h4>
         <ol class="gy">
-          <li class="gy-term"><span class="gy-when">1월 ~ 3월</span><strong>정규 1차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
-          <li class="gy-term"><span class="gy-when">4월 ~ 6월</span><strong>정규 2차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
-          <li class="gy-sp"><span class="gy-when">7월</span><strong>Summer Class</strong><span class="gy-len">4주 특강</span><p>필수 역량 강화<br>토론 · 발표 · 영자신문</p></li>
-          <li class="gy-term"><span class="gy-when">8월 ~ 10월</span><strong>정규 3차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
-          <li class="gy-sp"><span class="gy-when">12월</span><strong>Winter Class</strong><span class="gy-len">4주 특강</span><p>새 학기 준비<br>영어 듣기 · 구문독해 · 수행평가</p></li>
+          <li class="gy-term" data-months="1,2,3"><span class="gy-when">1월 ~ 3월</span><strong>정규 1차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
+          <li class="gy-term" data-months="4,5,6"><span class="gy-when">4월 ~ 6월</span><strong>정규 2차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
+          <li class="gy-sp" data-months="7"><span class="gy-when">7월</span><strong>Summer Class</strong><span class="gy-len">4주 특강</span><p>필수 역량 강화<br>토론 · 발표 · 영자신문</p></li>
+          <li class="gy-term" data-months="8,9,10"><span class="gy-when">8월 ~ 10월</span><strong>정규 3차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
+          <li class="gy-sp" data-months="12"><span class="gy-when">12월</span><strong>Winter Class</strong><span class="gy-len">4주 특강</span><p>새 학기 준비<br>영어 듣기 · 구문독해 · 수행평가</p></li>
         </ol>
       </div>
 
@@ -1589,6 +1598,24 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     rdlg.classList.add('wide');
     rdlg.showModal();
   }
+
+  /* 1년 과정: 이번 달 과정을 강조 (진행 중인 과정이 없으면 다음 과정) */
+  (function () {
+    var gy = $('.gy'); if (!gy) return;
+    var items = $$('li[data-months]', gy), m = new Date().getMonth() + 1, hit = null, label = '지금 진행 중';
+    items.forEach(function (li) { if (li.dataset.months.split(',').indexOf(String(m)) >= 0) hit = li; });
+    if (!hit) {
+      for (var k = 1; k <= 12 && !hit; k++) {
+        var mm = (m + k - 1) % 12 + 1;
+        items.forEach(function (li) { if (!hit && li.dataset.months.split(',').indexOf(String(mm)) >= 0) hit = li; });
+      }
+      if (hit) { label = '다음 과정 · 곧 시작'; hit.classList.add('next'); }
+    }
+    if (!hit) return;
+    var b = document.createElement('span'); b.className = 'gy-now'; b.textContent = label;
+    hit.insertBefore(b, hit.firstChild); hit.classList.add('now'); hit.setAttribute('aria-current', 'date');
+    gy.classList.add('has-now');
+  })();
 
   $$('.report-more').forEach(function (b) {
     b.addEventListener('click', function () {
