@@ -439,16 +439,20 @@ button.vcard:hover .vplay{background:#fff}
 .qs-page{position:relative;padding:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;cursor:zoom-in;transition:transform .15s ease,box-shadow .15s ease}
 .qs-page:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(25,34,79,.14)}
 .qs-page img{display:block;width:100%;height:auto}
-.qs-pages.grouped{grid-template-columns:minmax(0,1fr);gap:18px}
-.qs-group{display:grid;gap:8px}
-.qs-glabel{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
-.qs-glabel strong{font-weight:800;color:var(--navy-deep)}
-.qs-glabel span{font-size:.84rem;color:var(--ink-soft)}
+.qs-panel.split{display:block}
+.qs-head{padding-bottom:18px;border-bottom:2px solid var(--navy)}
+.qs-row{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,4vw,52px);align-items:start;padding:clamp(22px,3vw,32px) 0}
+.qs-row + .qs-row{border-top:1px dashed var(--line)}
+.qs-row:last-child{padding-bottom:0}
 .qs-pair{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qs-glabel{display:flex;flex-wrap:wrap;align-items:baseline;gap:4px 10px}
+.qs-glabel strong{font-weight:800;font-size:1.18rem;color:var(--navy-deep)}
+.qs-glabel span{font-size:.86rem;color:var(--ink-soft)}
+.qs-desc .qs-rows{margin-top:12px}
 .qs-page span{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);box-shadow:0 2px 6px rgba(0,0,0,.12);font-size:.76rem;font-weight:800;color:var(--navy-deep);background:var(--yellow);border-radius:999px;padding:1px 10px}
 .qs-book{font-size:.84rem;font-weight:700;letter-spacing:.02em;color:var(--ink-soft)}
-.qs-body h3{margin-top:6px;font-family:var(--font-display);font-weight:900;font-size:1.7rem;letter-spacing:-.03em;color:var(--navy-deep)}
-.qs-body h3 span{display:block;margin-top:8px;font-family:var(--font-body,inherit);font-size:1.08rem;font-weight:700;letter-spacing:-.01em;line-height:1.5;color:var(--ink)}
+.qs-body h3,.qs-head h3{margin-top:6px;font-family:var(--font-display);font-weight:900;font-size:1.7rem;letter-spacing:-.03em;color:var(--navy-deep)}
+.qs-body h3 span,.qs-head h3 span{display:block;margin-top:8px;font-family:var(--font-body,inherit);font-size:1.08rem;font-weight:700;letter-spacing:-.01em;line-height:1.5;color:var(--ink)}
 .qs-rows{margin-top:18px;border-top:1px solid var(--line)}
 .qs-rows > div{display:grid;grid-template-columns:5.2em minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
 .qs-rows dt{font-weight:800;font-size:.9rem;color:var(--navy);padding-top:2px}
@@ -472,8 +476,9 @@ button.vcard:hover .vplay{background:#fff}
 .dev-badge.on-cover{position:absolute;left:12px;top:12px;z-index:1;box-shadow:0 2px 8px rgba(0,0,0,.15)}
 @media (max-width:860px){
   .qs-panel{grid-template-columns:minmax(0,1fr);gap:20px;padding:18px}
-  .qs-body h3{font-size:1.45rem}
-  .qs-body h3 span{font-size:1rem}
+  .qs-row{grid-template-columns:minmax(0,1fr);gap:16px;padding:20px 0}
+  .qs-body h3,.qs-head h3{font-size:1.45rem}
+  .qs-body h3 span,.qs-head h3 span{font-size:1rem}
   .qs-rows > div{grid-template-columns:minmax(0,1fr);gap:6px;padding:12px 0}
   .qs-body > .btn{width:100%}
 }
@@ -968,45 +973,55 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
         <button class="qs-tab" type="button" role="tab" id="qt-c" aria-controls="qp-c" aria-selected="false" data-qs="c">Level C</button>
         <button class="qs-tab" type="button" disabled aria-disabled="true">Level D <small>준비 중</small></button>
       </div>
-      <article class="qs-panel" id="qp-p" role="tabpanel" aria-labelledby="qt-p">
-        <div class="qs-pages grouped">
-          <div class="qs-group">
-            <p class="qs-glabel"><strong>Phonics</strong><span>Now I’m Reading 1 · Hot Dog</span></p>
-            <div class="qs-pair">
-            <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p0.webp" data-zoom-alt="Level P Phonics 퀴즈시트 앞장과 뒷장" aria-label="Level P Phonics 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-p0-1.webp" width="620" height="876" loading="lazy" alt="Level P Phonics 퀴즈시트 앞장"><span>앞장</span></button>
-            <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p0.webp" data-zoom-alt="Level P Phonics 퀴즈시트 앞장과 뒷장" aria-label="Level P Phonics 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-p0-2.webp" width="620" height="876" loading="lazy" alt="Level P Phonics 퀴즈시트 뒷장"><span>뒷장</span></button>
-            </div>
+      <article class="qs-panel split" id="qp-p" role="tabpanel" aria-labelledby="qt-p">
+        <div class="qs-head">
+          <p class="qs-book">Phonics → Phonics Story Book (다독)</p>
+          <h3>Level P<span>소리와 글자를 잇고, 처음으로 책 한 권을 이해합니다.</span></h3>
+        </div>
+        <div class="qs-row">
+          <div class="qs-pair">
+              <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p0.webp" data-zoom-alt="Level P Phonics 퀴즈시트 앞장과 뒷장" aria-label="Level P Phonics 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-p0-1.webp" width="620" height="876" loading="lazy" alt="Level P Phonics 퀴즈시트 앞장"><span>앞장</span></button>
+              <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p0.webp" data-zoom-alt="Level P Phonics 퀴즈시트 앞장과 뒷장" aria-label="Level P Phonics 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-p0-2.webp" width="620" height="876" loading="lazy" alt="Level P Phonics 퀴즈시트 뒷장"><span>뒷장</span></button>
           </div>
-          <div class="qs-group">
-            <p class="qs-glabel"><strong>Phonics Story Book</strong><span>ORT 5 · A New Classroom</span></p>
-            <div class="qs-pair">
-            <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p.webp" data-zoom-alt="Level P Phonics Story Book 퀴즈시트 앞장과 뒷장" aria-label="Level P Phonics Story Book 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-p-1.webp" width="620" height="876" loading="lazy" alt="Level P Phonics Story Book 퀴즈시트 앞장"><span>앞장</span></button>
-            <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p.webp" data-zoom-alt="Level P Phonics Story Book 퀴즈시트 앞장과 뒷장" aria-label="Level P Phonics Story Book 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-p-2.webp" width="620" height="876" loading="lazy" alt="Level P Phonics Story Book 퀴즈시트 뒷장"><span>뒷장</span></button>
-            </div>
+          <div class="qs-desc">
+            <p class="qs-glabel"><strong>Phonics</strong><span>Now I’m Reading 1 · Hot Dog</span></p>
+            <dl class="qs-rows">
+              <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>그림 어휘 두 번 쓰기</li><li>알파벳 대 · 소문자 쓰기</li><li>같은 소리 단어 찾기</li><li>숨은 단어 찾기</li><li>책 내용 빈칸 고르기</li></ul></dd></div>
+              <div><dt>목적</dt><dd>소리와 글자를 놀이처럼 연결하고, 그날 읽은 파닉스 책의 단어를 확실히 익힙니다.</dd></div>
+              <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
+                <li>같은 모음 소리 단어를 직접 찾으며 파닉스 규칙을 스스로 발견합니다.</li>
+                <li>그림과 함께 쓰며 단어의 소리 · 뜻 · 철자를 한 번에 기억합니다.</li>
+                <li>단어 찾기 퍼즐과 따라 쓰기로 어린 아이도 부담 없이 복습합니다.</li>
+              </ul></dd></div>
+            </dl>
           </div>
         </div>
-        <div class="qs-body">
-          <p class="qs-book">Phonics → Phonics Story Book</p>
-          <h3>Level P<span>소리와 글자를 잇고, 처음으로 책 한 권을 이해합니다.</span></h3>
-          <dl class="qs-rows">
-            <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>그림 어휘 두 번 쓰기</li><li>알파벳 대 · 소문자 쓰기</li><li>같은 소리 단어 찾기</li><li>숨은 단어 찾기</li><li>책 내용 객관식</li><li>단어가 쓰인 문장 해석</li><li>캐릭터 묘사 문장</li></ul></dd></div>
-            <div><dt>목적</dt><dd>Phonics 단계에서는 소리와 글자를 놀이처럼 익히고, Phonics Story Book 단계에서는 이야기 한 권을 이해하며 처음으로 내 문장을 써 봅니다.</dd></div>
-            <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
-              <li>같은 모음 소리 단어를 직접 찾으며 파닉스 규칙을 스스로 발견합니다.</li>
-              <li>이야기를 끝까지 이해했는지 스스로 확인하는 습관이 생깁니다.</li>
-              <li>색깔 · 무늬 단어로 인물을 묘사하며 첫 영어 표현을 만듭니다.</li>
-            </ul></dd></div>
-          </dl>
-          
+        <div class="qs-row">
+          <div class="qs-pair">
+              <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p.webp" data-zoom-alt="Level P Phonics Story Book · 다독 퀴즈시트 앞장과 뒷장" aria-label="Level P Phonics Story Book · 다독 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-p-1.webp" width="620" height="876" loading="lazy" alt="Level P Phonics Story Book · 다독 퀴즈시트 앞장"><span>앞장</span></button>
+              <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p.webp" data-zoom-alt="Level P Phonics Story Book · 다독 퀴즈시트 앞장과 뒷장" aria-label="Level P Phonics Story Book · 다독 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-p-2.webp" width="620" height="876" loading="lazy" alt="Level P Phonics Story Book · 다독 퀴즈시트 뒷장"><span>뒷장</span></button>
+          </div>
+          <div class="qs-desc">
+            <p class="qs-glabel"><strong>Phonics Story Book · 다독</strong><span>ORT 5 · A New Classroom</span></p>
+            <dl class="qs-rows">
+              <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>어휘 두 번 쓰기</li><li>책 내용 객관식 5문항</li><li>단어가 쓰인 문장 해석</li><li>생각 질문</li><li>캐릭터 묘사 문장</li></ul></dd></div>
+              <div><dt>목적</dt><dd>이야기책 한 권을 끝까지 이해했는지 확인하고, 처음으로 내 문장을 써 봅니다.</dd></div>
+              <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
+                <li>이야기를 끝까지 이해했는지 스스로 확인하는 습관이 생깁니다.</li>
+                <li>단어가 쓰인 책 문장을 찾아 해석하며 문맥 속에서 단어를 익힙니다.</li>
+                <li>색깔 · 무늬 단어로 인물을 묘사하며 첫 영어 표현을 만듭니다.</li>
+              </ul></dd></div>
+            </dl>
+          </div>
         </div>
       </article>
       <article class="qs-panel" id="qp-a" role="tabpanel" aria-labelledby="qt-a" hidden>
         <div class="qs-pages">
-          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-a.webp" data-zoom-alt="Level A 퀴즈시트 앞장과 뒷장" aria-label="Level A 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-a-1.webp" width="620" height="877" loading="lazy" alt="Level A 퀴즈시트 앞장. 어휘와 문법 활동"><span>앞장</span></button>
-          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-a.webp" data-zoom-alt="Level A 퀴즈시트 앞장과 뒷장" aria-label="Level A 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-a-2.webp" width="620" height="877" loading="lazy" alt="Level A 퀴즈시트 뒷장. 내용 이해 퀴즈"><span>뒷장</span></button>
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-a.webp?v=2" data-zoom-alt="Level A 퀴즈시트 앞장과 뒷장" aria-label="Level A 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-a-1.webp?v=2" width="620" height="877" loading="lazy" alt="Level A 퀴즈시트 앞장. 어휘와 문법 활동"><span>앞장</span></button>
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-a.webp?v=2" data-zoom-alt="Level A 퀴즈시트 앞장과 뒷장" aria-label="Level A 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-a-2.webp" width="620" height="877" loading="lazy" alt="Level A 퀴즈시트 뒷장. 내용 이해 퀴즈"><span>뒷장</span></button>
         </div>
         <div class="qs-body">
-          <p class="qs-book">Pete the Cat · Family Road Trip</p>
+          <p class="qs-book">Pete the Cat · Scaredy Cat / Family Road Trip</p>
           <h3>Level A<span>방금 읽은 책 문장으로 문법을 만나고, 추론을 시작합니다.</span></h3>
           <dl class="qs-rows">
             <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>어휘 20개</li><li>주어 · 동사 찾고 시제 바꾸기</li><li>틀린 문장 고치기</li><li>사실 · NOT true · 추론 문제</li><li>상황 적용 문제</li><li>문장 순서 맞추기 + 의역</li></ul></dd></div>
@@ -1017,49 +1032,49 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
               <li>책과 사전 없이 풀며 진짜 이해한 만큼을 확인합니다.</li>
             </ul></dd></div>
           </dl>
-          <button class="btn btn-line btn-sm" type="button" data-zoom="assets/quiz/quiz-a.webp" data-zoom-alt="Level A 퀴즈시트 앞장과 뒷장">앞장 · 뒷장 크게 보기</button>
+          <button class="btn btn-line btn-sm" type="button" data-zoom="assets/quiz/quiz-a.webp?v=2" data-zoom-alt="Level A 퀴즈시트 앞장과 뒷장">앞장 · 뒷장 크게 보기</button>
         </div>
       </article>
-      <article class="qs-panel" id="qp-b" role="tabpanel" aria-labelledby="qt-b" hidden>
-        <div class="qs-pages grouped">
-          <div class="qs-group">
-            <p class="qs-glabel"><strong>고전 문학</strong><span>Easy Classics · Oliver Twist</span></p>
-            <div class="qs-pair">
-            <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b.webp" data-zoom-alt="Level B 고전 문학 퀴즈시트 앞장과 뒷장" aria-label="Level B 고전 문학 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-b-1.webp" width="620" height="876" loading="lazy" alt="Level B 고전 문학 퀴즈시트 앞장"><span>앞장</span></button>
-            <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b.webp" data-zoom-alt="Level B 고전 문학 퀴즈시트 앞장과 뒷장" aria-label="Level B 고전 문학 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-b-2.webp" width="620" height="876" loading="lazy" alt="Level B 고전 문학 퀴즈시트 뒷장"><span>뒷장</span></button>
-            </div>
+      <article class="qs-panel split" id="qp-b" role="tabpanel" aria-labelledby="qt-b" hidden>
+        <div class="qs-head">
+          <p class="qs-book">고전 문학 + 비문학 독해</p>
+          <h3>Level B<span>고전과 비문학을 읽고, 글에 쓰여 있지 않은 의미까지 찾습니다.</span></h3>
+        </div>
+        <div class="qs-row">
+          <div class="qs-pair">
+              <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b.webp" data-zoom-alt="Level B 고전 문학 퀴즈시트 앞장과 뒷장" aria-label="Level B 고전 문학 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-b-1.webp" width="620" height="876" loading="lazy" alt="Level B 고전 문학 퀴즈시트 앞장"><span>앞장</span></button>
+              <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b.webp" data-zoom-alt="Level B 고전 문학 퀴즈시트 앞장과 뒷장" aria-label="Level B 고전 문학 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-b-2.webp" width="620" height="876" loading="lazy" alt="Level B 고전 문학 퀴즈시트 뒷장"><span>뒷장</span></button>
           </div>
-          <div class="qs-group">
-            <p class="qs-glabel"><strong>비문학 독해</strong><span>Reading Practice · How Banks Work</span></p>
-            <div class="qs-pair">
-            <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b2.webp" data-zoom-alt="Level B 비문학 독해 퀴즈시트 앞장과 뒷장" aria-label="Level B 비문학 독해 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-b2-1.webp" width="620" height="876" loading="lazy" alt="Level B 비문학 독해 퀴즈시트 앞장"><span>앞장</span></button>
-            <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b2.webp" data-zoom-alt="Level B 비문학 독해 퀴즈시트 앞장과 뒷장" aria-label="Level B 비문학 독해 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-b2-2.webp" width="620" height="876" loading="lazy" alt="Level B 비문학 독해 퀴즈시트 뒷장"><span>뒷장</span></button>
-            </div>
+          <div class="qs-desc">
+            <p class="qs-glabel"><strong>고전 문학</strong><span>Easy Classics · Oliver Twist</span></p>
+            <dl class="qs-rows">
+              <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>어휘 30개</li><li>인과 · 시점 문제</li><li>지시어 · 감정 추론</li><li>그림 단서 찾기</li><li>작가와 시대 배경</li><li>주제 글쓰기</li></ul></dd></div>
+              <div><dt>목적</dt><dd>고전 문학 속 인물의 행동과 말에 숨은 의미를 읽고, 작품이 던지는 질문에 내 생각을 씁니다.</dd></div>
+              <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
+                <li>인과 관계와 지시어를 따라가며 긴 이야기를 정확하게 읽습니다.</li>
+                <li>작가와 시대 배경을 함께 알아 작품을 깊이 이해합니다.</li>
+                <li>책 속 예시를 근거로 내 의견을 쓰는 힘이 생깁니다.</li>
+              </ul></dd></div>
+            </dl>
           </div>
         </div>
-        <div class="qs-body">
-          <p class="qs-book">고전 문학 · Easy Classics</p>
-          <h3>Level B<span>고전을 읽고, 글에 쓰여 있지 않은 의미를 찾습니다.</span></h3>
-          <dl class="qs-rows">
-            <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>어휘 30개</li><li>인과 · 시점 문제</li><li>지시어 · 감정 추론</li><li>그림 단서 찾기</li><li>작가와 시대 배경</li><li>주제 글쓰기</li></ul></dd></div>
-            <div><dt>목적</dt><dd>고전 문학 속 인물의 행동과 말에 숨은 의미를 읽고, 작품이 던지는 질문에 내 생각을 씁니다.</dd></div>
-            <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
-              <li>인과 관계와 지시어를 따라가며 긴 이야기를 정확하게 읽습니다.</li>
-              <li>작가와 시대 배경을 함께 알아 작품을 깊이 이해합니다.</li>
-              <li>책 속 예시를 근거로 내 의견을 쓰는 힘이 생깁니다.</li>
-            </ul></dd></div>
-          </dl>
-          <div class="qs-extra">
-            <p class="qs-extra-label"><strong>+ 비문학 독해</strong><span>Reading Practice · How Banks Work</span></p>
-            <p>경제 · 사회 · 과학 같은 교과 주제의 지문을 시트에 직접 싣고, 문제마다 해설 칸을 둡니다.</p>
-            <ul class="qs-chips"><li>주제 찾기</li><li>내용 일치(TRUE)</li><li>원리 이해</li><li>빈칸 채우기</li><li>완료 시제 문장 해석</li></ul>
-            <ul class="ticks qs-ticks">
-              <li>모의고사와 수능 독해에 나오는 문제 유형을 일찍부터 익혀 문제 푸는 감각을 키웁니다.</li>
-              <li>낯선 주제의 글도 핵심을 빠르게 찾는 비문학 독해력을 다집니다.</li>
-              <li>해설 칸에 틀린 이유를 적으며 스스로 오답을 정리합니다.</li>
-            </ul>
+        <div class="qs-row">
+          <div class="qs-pair">
+              <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b2.webp" data-zoom-alt="Level B 비문학 독해 퀴즈시트 앞장과 뒷장" aria-label="Level B 비문학 독해 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-b2-1.webp" width="620" height="876" loading="lazy" alt="Level B 비문학 독해 퀴즈시트 앞장"><span>앞장</span></button>
+              <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b2.webp" data-zoom-alt="Level B 비문학 독해 퀴즈시트 앞장과 뒷장" aria-label="Level B 비문학 독해 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-b2-2.webp" width="620" height="876" loading="lazy" alt="Level B 비문학 독해 퀴즈시트 뒷장"><span>뒷장</span></button>
           </div>
-          
+          <div class="qs-desc">
+            <p class="qs-glabel"><strong>비문학 독해</strong><span>Reading Practice · How Banks Work</span></p>
+            <dl class="qs-rows">
+              <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>주제 찾기</li><li>내용 일치(TRUE)</li><li>원리 이해</li><li>빈칸 채우기</li><li>완료 시제 문장 해석</li><li>해설 쓰기</li></ul></dd></div>
+              <div><dt>목적</dt><dd>경제 · 사회 · 과학 같은 교과 주제의 지문을 시트에 직접 싣고, 글의 주제와 원리를 파악합니다.</dd></div>
+              <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
+                <li>모의고사와 수능 독해에 나오는 문제 유형을 일찍부터 익혀 문제 푸는 감각을 키웁니다.</li>
+                <li>낯선 주제의 글도 핵심을 빠르게 찾는 비문학 독해력을 다집니다.</li>
+                <li>해설 칸에 틀린 이유를 적으며 스스로 오답을 정리합니다.</li>
+              </ul></dd></div>
+            </dl>
+          </div>
         </div>
       </article>
       <article class="qs-panel" id="qp-c" role="tabpanel" aria-labelledby="qt-c" hidden>
