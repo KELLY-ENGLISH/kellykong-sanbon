@@ -320,6 +320,20 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
   .report figcaption{width:100%;font-size:.98rem;line-height:1.7}
   .report figcaption strong{font-size:1.1rem}
 }
+@media (max-width:860px){
+  /* 휴대전화 · 태블릿: 북리포트는 그림 위, 글 아래 */
+  .report{flex-direction:column;gap:12px;padding:12px;margin-top:18px}
+  .report-thumb,.report-thumb.wide{width:100%}
+  .report-thumb img,.report-thumb.wide img{aspect-ratio:auto;max-height:420px;object-fit:contain;object-position:center;background:#fff}
+  .report figcaption{width:100%;font-size:.95rem;line-height:1.65}
+  .report .btn{align-self:stretch;margin-top:8px}
+}
+.report-more{display:none}
+@media (max-width:600px){
+  .report-desc{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden}
+  .report.open .report-desc{display:block;-webkit-line-clamp:unset}
+  .report-more{display:inline-flex;align-items:center;gap:4px;padding:2px 0;border:0;background:none;color:var(--navy);font-weight:700;font-size:.88rem;text-decoration:underline;text-underline-offset:3px;cursor:pointer}
+}
 @media (max-width:600px){
   /* 책장: 낮고 넓게, 아래 패널이 바로 보이도록 */
   .cur-hint{margin-bottom:22px;padding:10px 16px 10px 10px;gap:10px}
@@ -347,12 +361,6 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
   .lv-rows dd .lv-or{display:inline;margin-left:4px}
   .ticks{gap:8px;font-size:.95rem;line-height:1.55}
   .ticks li{padding-left:26px}
-  /* 북리포트: 그림 위, 글 아래 */
-  .report{flex-direction:column;gap:12px;padding:12px;margin-top:18px}
-  .report-thumb,.report-thumb.wide{width:100%}
-  .report-thumb img{aspect-ratio:auto;max-height:340px;object-fit:contain;object-position:center;background:#fff}
-  .report figcaption{width:100%;font-size:.92rem;line-height:1.6}
-  .report .btn{align-self:stretch;margin-top:8px}
 }
 
 /* ---------- 이달의 소식 ---------- */
@@ -419,6 +427,47 @@ button.vcard:hover .vplay{background:#fff}
 .lmeta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .lmeta li{padding:2px 11px;border-radius:999px;background:var(--paper);font-size:.82rem;font-weight:700;color:var(--ink-soft)}
 .lbody .btn{margin-top:auto;align-self:flex-start}
+.qs{margin-bottom:clamp(48px,6vw,80px)}
+.qs-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
+.qs-tab{min-height:46px;padding:0 20px;border-radius:999px;border:2px solid var(--navy);background:#fff;color:var(--navy);font-weight:800;font-size:1rem;cursor:pointer}
+.qs-tab[aria-selected="true"]{background:var(--navy);color:#fff}
+.qs-tab:disabled{border-style:dashed;border-color:var(--line);color:var(--ink-soft);background:transparent;cursor:default}
+.qs-tab small{font-size:.74rem;font-weight:700;margin-left:4px}
+.qs-panel{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:clamp(28px,4vw,52px);align-items:start;background:#fff;border-radius:24px;padding:clamp(22px,3.2vw,40px)}
+.qs-panel[hidden]{display:none}
+.qs-pages{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.qs-page{position:relative;padding:0;border:1.5px solid var(--line);border-radius:10px;overflow:hidden;background:#fff;cursor:zoom-in;transition:transform .15s ease,box-shadow .15s ease}
+.qs-page:hover{transform:translateY(-3px);box-shadow:0 10px 22px rgba(25,34,79,.14)}
+.qs-page img{display:block;width:100%;height:auto}
+.qs-page span{position:absolute;left:50%;bottom:8px;transform:translateX(-50%);box-shadow:0 2px 6px rgba(0,0,0,.12);font-size:.76rem;font-weight:800;color:var(--navy-deep);background:var(--yellow);border-radius:999px;padding:1px 10px}
+.qs-book{font-size:.84rem;font-weight:700;letter-spacing:.02em;color:var(--ink-soft)}
+.qs-body h3{margin-top:6px;font-family:var(--font-display);font-weight:900;font-size:1.7rem;letter-spacing:-.03em;color:var(--navy-deep)}
+.qs-body h3 span{display:block;margin-top:8px;font-family:var(--font-body,inherit);font-size:1.08rem;font-weight:700;letter-spacing:-.01em;line-height:1.5;color:var(--ink)}
+.qs-rows{margin-top:18px;border-top:1px solid var(--line)}
+.qs-rows > div{display:grid;grid-template-columns:5.2em minmax(0,1fr);gap:14px;padding:14px 0;border-bottom:1px solid var(--line)}
+.qs-rows dt{font-weight:800;font-size:.9rem;color:var(--navy);padding-top:2px}
+.qs-rows dd{color:var(--ink-soft);line-height:1.65}
+.qs-chips{display:flex;flex-wrap:wrap;gap:6px}
+.qs-chips li{font-size:.86rem;font-weight:700;color:var(--navy-deep);background:var(--paper);border-radius:8px;padding:3px 10px}
+.qs-ticks{margin-top:0;gap:6px}
+.qs-body > .btn{margin-top:18px}
+.dev-head{margin-bottom:22px}
+.dev-head h3{display:flex;align-items:center;gap:10px;font-weight:800;font-size:1.3rem;color:var(--navy-deep)}
+.dev-head p{margin-top:8px;color:var(--ink-soft)}
+.dev-badge{display:inline-block;font-size:.78rem;font-weight:800;color:var(--navy-deep);background:var(--yellow);border-radius:999px;padding:2px 11px}
+.lcover{position:relative}
+.dev-badge.on-cover{position:absolute;left:12px;top:12px;z-index:1;box-shadow:0 2px 8px rgba(0,0,0,.15)}
+@media (max-width:860px){
+  .qs-panel{grid-template-columns:minmax(0,1fr);gap:20px;padding:18px}
+  .qs-body h3{font-size:1.45rem}
+  .qs-body h3 span{font-size:1rem}
+  .qs-rows > div{grid-template-columns:minmax(0,1fr);gap:6px;padding:12px 0}
+  .qs-body > .btn{width:100%}
+}
+@media (max-width:420px){
+  .qs-tabs{flex-wrap:nowrap;overflow-x:auto;margin:0 -20px 16px;padding:0 20px 4px;scrollbar-width:none}
+  .qs-tab{flex:none;min-height:42px;padding:0 16px;font-size:.94rem}
+}
 .lab-note{margin-top:26px;font-size:.92rem;color:var(--ink-soft)}
 @media (max-width:900px){
   .lgrid{grid-template-columns:minmax(0,1fr)}
@@ -577,7 +626,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
       <a href="#curriculum">커리큘럼</a>
       <a href="#news">이달의 소식</a>
       <a href="#videos">영상</a>
-      <a href="#lab">워크시트 체험</a>
+      <a href="#lab">퀴즈시트</a>
       <a href="#kelly">켈리콩</a>
       <a class="nav-cta" href="#contact">상담 문의</a>
     </nav>
@@ -605,7 +654,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
           <p class="hero-sub">한 권의 책이 한 문장이 되고,<br>한 문장이 내 생각이 될 때까지. <span class="nb">켈리가 함께합니다.</span></p>
           <div class="btn-row">
             <a class="btn btn-navy" href="#contact">상담 문의하기</a>
-            <a class="btn btn-line" href="#lab">워크시트 체험하기</a>
+            <a class="btn btn-line" href="#lab">퀴즈시트 보기</a>
           </div>
           <dl class="where">
             <div><dt>위치</dt><dd>군포시 광정로 70 유공빌딩</dd></div>
@@ -669,7 +718,8 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <figcaption>
               <span class="report-tag">작성 예시</span>
               <strong>Level P 다독 북리포트</strong>
-              <span>Level P에서는 책 속 문장을 따라 쓰며 영어 문장의 형태와 표현에 익숙해집니다. 주인공을 확인하고 이야기의 처음·중간·끝을 정리하며, 읽은 내용을 순서대로 이해하고 정리하는 기초를 쌓습니다.</span>
+              <span class="report-desc">Level P에서는 책 속 문장을 따라 쓰며 영어 문장의 형태와 표현에 익숙해집니다. 주인공을 확인하고 이야기의 처음·중간·끝을 정리하며, 읽은 내용을 순서대로 이해하고 정리하는 기초를 쌓습니다.</span>
+              <button class="report-more" type="button" aria-expanded="false">설명 더 보기</button>
               <button class="btn btn-line btn-sm" type="button" data-report="p">크게 보기</button>
             </figcaption>
           </figure>
@@ -697,7 +747,8 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <figcaption>
               <span class="report-tag">작성 예시</span>
               <strong>Level A 정독 북리포트</strong>
-              <span>Level A에서는 배운 문법으로 주인공을 설명하는 문장을 쓰고, 이야기의 흐름을 정리합니다. 뒷면에서는 책 문장을 과거형 · 3인칭 · 간접화법으로 바꿔 쓰며 시제와 인칭 감각을 집중 훈련하고, 틀린 동사와 문장은 오답노트 표에 다시 정리해 같은 실수를 줄여 갑니다. (2장)</span>
+              <span class="report-desc">Level A에서는 배운 문법으로 주인공을 설명하는 문장을 쓰고, 이야기의 흐름을 정리합니다. 뒷면에서는 책 문장을 과거형 · 3인칭 · 간접화법으로 바꿔 쓰며 시제와 인칭 감각을 집중 훈련하고, 틀린 동사와 문장은 오답노트 표에 다시 정리해 같은 실수를 줄여 갑니다. (2장)</span>
+              <button class="report-more" type="button" aria-expanded="false">설명 더 보기</button>
               <button class="btn btn-line btn-sm" type="button" data-report="a">크게 보기</button>
             </figcaption>
           </figure>
@@ -722,7 +773,8 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <figcaption>
               <span class="report-tag">작성 예시</span>
               <strong>Level B 다독 · 정독 북리포트</strong>
-              <span>Level B에서는 who/which, when/while 같은 문법으로 문장을 넓히고, 선생님과 함께 작문한 뒤 처음·중간·끝 1차 초안을 씁니다. 스스로 오류를 찾아 고치며 글의 완성도를 높여 갑니다. 정독에서는 so ~ that, 부사절 접속사, 수동태 중 두 가지 이상을 줄거리 요약 속에 자연스럽게 넣고, 그 문법을 쓴 줄에 직접 체크합니다. (2장)</span>
+              <span class="report-desc">Level B에서는 who/which, when/while 같은 문법으로 문장을 넓히고, 선생님과 함께 작문한 뒤 처음·중간·끝 1차 초안을 씁니다. 스스로 오류를 찾아 고치며 글의 완성도를 높여 갑니다. 정독에서는 so ~ that, 부사절 접속사, 수동태 중 두 가지 이상을 줄거리 요약 속에 자연스럽게 넣고, 그 문법을 쓴 줄에 직접 체크합니다. (2장)</span>
+              <button class="report-more" type="button" aria-expanded="false">설명 더 보기</button>
               <button class="btn btn-line btn-sm" type="button" data-report="b">크게 보기</button>
             </figcaption>
           </figure>
@@ -746,7 +798,8 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <figcaption>
               <span class="report-tag">작성 예시</span>
               <strong>Level C 정독 북리포트</strong>
-              <span>Level C에서는 책을 요약한 뒤, 주장 → 근거 → 예시 → 결론의 틀에 맞춰 나의 의견을 에세이로 씁니다. 선생님의 피드백을 받아 다시 고쳐 쓰며 논리적인 글쓰기를 완성합니다. (2장)</span>
+              <span class="report-desc">Level C에서는 책을 요약한 뒤, 주장 → 근거 → 예시 → 결론의 틀에 맞춰 나의 의견을 에세이로 씁니다. 선생님의 피드백을 받아 다시 고쳐 쓰며 논리적인 글쓰기를 완성합니다. (2장)</span>
+              <button class="report-more" type="button" aria-expanded="false">설명 더 보기</button>
               <button class="btn btn-line btn-sm" type="button" data-report="c">크게 보기</button>
             </figcaption>
           </figure>
@@ -770,7 +823,8 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <figcaption>
               <span class="report-tag">작성 예시</span>
               <strong>Level D Final 북리포트</strong>
-              <span>Level D에서는 소설을 챕터별로 3~4문장씩 요약한 뒤, 주제 글쓰기로 나아갑니다. 하나의 주제를 여러 관점에서 따져 보고 반론까지 검토하며, 자신의 주장을 근거로 설득하는 비판적 글쓰기(Critical Thinking)를 합니다. 선생님의 첨삭으로 글을 다듬습니다. (2장)</span>
+              <span class="report-desc">Level D에서는 소설을 챕터별로 3~4문장씩 요약한 뒤, 주제 글쓰기로 나아갑니다. 하나의 주제를 여러 관점에서 따져 보고 반론까지 검토하며, 자신의 주장을 근거로 설득하는 비판적 글쓰기(Critical Thinking)를 합니다. 선생님의 첨삭으로 글을 다듬습니다. (2장)</span>
+              <button class="report-more" type="button" aria-expanded="false">설명 더 보기</button>
               <button class="btn btn-line btn-sm" type="button" data-report="d">크게 보기</button>
             </figcaption>
           </figure>
@@ -885,17 +939,111 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
   <div class="wrap">
     <div class="lab-head">
       <div class="sec-head">
-        <h2 id="lab-title">수업 뒤에 아이가 하는 워크시트,<br>지금 직접 해 보세요</h2>
-        <p>설치도 로그인도 없이 이 화면에서 바로 열립니다. 슬라이더를 움직이고, 고르고, 영어 음성을 들어 보는 체험판 세 가지입니다.</p>
+        <h2 id="lab-title">책 한 권마다,<br>켈리가 직접 만든 퀴즈시트</h2>
+        <p>2,000권이 넘는 원서마다 켈리가 자체 개발한 퀴즈시트가 있습니다. 책과 사전 없이 스스로 풀며, 읽은 만큼 정말 이해했는지 확인합니다. 레벨별 실제 시트를 앞장 · 뒷장으로 살펴보세요.</p>
       </div>
       <picture class="sticker lab-sticker">
         <source media="(prefers-reduced-motion: reduce)" srcset="assets/emo/e08-s.webp">
         <img src="assets/emo/e08.webp" width="360" height="360" loading="lazy" alt="돋보기를 든 켈리콩 캐릭터. 어디 보자~">
       </picture>
     </div>
+    <div class="qs">
+      <div class="qs-tabs" role="tablist" aria-label="레벨별 퀴즈시트">
+        <button class="qs-tab" type="button" role="tab" id="qt-p" aria-controls="qp-p" aria-selected="true" data-qs="p">Level P</button>
+        <button class="qs-tab" type="button" role="tab" id="qt-a" aria-controls="qp-a" aria-selected="false" data-qs="a">Level A</button>
+        <button class="qs-tab" type="button" role="tab" id="qt-b" aria-controls="qp-b" aria-selected="false" data-qs="b">Level B</button>
+        <button class="qs-tab" type="button" role="tab" id="qt-c" aria-controls="qp-c" aria-selected="false" data-qs="c">Level C</button>
+        <button class="qs-tab" type="button" disabled aria-disabled="true">Level D <small>준비 중</small></button>
+      </div>
+      <article class="qs-panel" id="qp-p" role="tabpanel" aria-labelledby="qt-p">
+        <div class="qs-pages">
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p.webp" data-zoom-alt="Level P 퀴즈시트 앞장과 뒷장" aria-label="Level P 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-p-1.webp" width="620" height="877" loading="lazy" alt="Level P 퀴즈시트 앞장. 어휘와 문법 활동"><span>앞장</span></button>
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-p.webp" data-zoom-alt="Level P 퀴즈시트 앞장과 뒷장" aria-label="Level P 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-p-2.webp" width="620" height="877" loading="lazy" alt="Level P 퀴즈시트 뒷장. 내용 이해 퀴즈"><span>뒷장</span></button>
+        </div>
+        <div class="qs-body">
+          <p class="qs-book">ORT 5 · A New Classroom</p>
+          <h3>Level P<span>소리와 글자를 잇고, 처음으로 책 한 권을 이해합니다.</span></h3>
+          <dl class="qs-rows">
+            <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>어휘 두 번 쓰기</li><li>책 내용 객관식</li><li>단어가 쓰인 문장 찾아 해석</li><li>생각 질문</li><li>캐릭터 묘사 문장</li></ul></dd></div>
+            <div><dt>목적</dt><dd>읽은 책의 단어와 내용을 그날 바로 확인하고, 처음으로 내 문장을 써 봅니다.</dd></div>
+            <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
+              <li>단어를 그림과 문장 속에서 함께 기억합니다.</li>
+              <li>이야기를 끝까지 이해했는지 스스로 확인하는 습관이 생깁니다.</li>
+              <li>색깔 · 무늬 단어로 인물을 묘사하며 첫 영어 표현을 만듭니다.</li>
+            </ul></dd></div>
+          </dl>
+          <button class="btn btn-line btn-sm" type="button" data-zoom="assets/quiz/quiz-p.webp" data-zoom-alt="Level P 퀴즈시트 앞장과 뒷장">앞장 · 뒷장 크게 보기</button>
+        </div>
+      </article>
+      <article class="qs-panel" id="qp-a" role="tabpanel" aria-labelledby="qt-a" hidden>
+        <div class="qs-pages">
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-a.webp" data-zoom-alt="Level A 퀴즈시트 앞장과 뒷장" aria-label="Level A 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-a-1.webp" width="620" height="877" loading="lazy" alt="Level A 퀴즈시트 앞장. 어휘와 문법 활동"><span>앞장</span></button>
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-a.webp" data-zoom-alt="Level A 퀴즈시트 앞장과 뒷장" aria-label="Level A 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-a-2.webp" width="620" height="877" loading="lazy" alt="Level A 퀴즈시트 뒷장. 내용 이해 퀴즈"><span>뒷장</span></button>
+        </div>
+        <div class="qs-body">
+          <p class="qs-book">Pete the Cat · Family Road Trip</p>
+          <h3>Level A<span>방금 읽은 책 문장으로 문법을 만나고, 추론을 시작합니다.</span></h3>
+          <dl class="qs-rows">
+            <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>어휘 20개</li><li>주어 · 동사 찾고 시제 바꾸기</li><li>틀린 문장 고치기</li><li>사실 · NOT true · 추론 문제</li><li>상황 적용 문제</li><li>문장 순서 맞추기 + 의역</li></ul></dd></div>
+            <div><dt>목적</dt><dd>따로 외운 문법이 아니라 책 속 문장에 바로 적용하고, 이해를 넘어 단서로 답을 찾습니다.</dd></div>
+            <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
+              <li>주어 · 동사 · 시제 · 어순 감각이 책 문장 속에서 자리 잡습니다.</li>
+              <li>NOT true, 상황 적용 문제로 꼼꼼히 읽는 습관이 생깁니다.</li>
+              <li>책과 사전 없이 풀며 진짜 이해한 만큼을 확인합니다.</li>
+            </ul></dd></div>
+          </dl>
+          <button class="btn btn-line btn-sm" type="button" data-zoom="assets/quiz/quiz-a.webp" data-zoom-alt="Level A 퀴즈시트 앞장과 뒷장">앞장 · 뒷장 크게 보기</button>
+        </div>
+      </article>
+      <article class="qs-panel" id="qp-b" role="tabpanel" aria-labelledby="qt-b" hidden>
+        <div class="qs-pages">
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b.webp" data-zoom-alt="Level B 퀴즈시트 앞장과 뒷장" aria-label="Level B 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-b-1.webp" width="620" height="877" loading="lazy" alt="Level B 퀴즈시트 앞장. 어휘와 문법 활동"><span>앞장</span></button>
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-b.webp" data-zoom-alt="Level B 퀴즈시트 앞장과 뒷장" aria-label="Level B 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-b-2.webp" width="620" height="877" loading="lazy" alt="Level B 퀴즈시트 뒷장. 내용 이해 퀴즈"><span>뒷장</span></button>
+        </div>
+        <div class="qs-body">
+          <p class="qs-book">Easy Classics · Oliver Twist</p>
+          <h3>Level B<span>비문학과 고전을 읽고, 글에 쓰여 있지 않은 의미를 찾습니다.</span></h3>
+          <dl class="qs-rows">
+            <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>개념 어휘 20~30개</li><li>문법으로 긴 문장 해석</li><li>주제 · 원리 파악</li><li>인과 · 지시어 · 감정 추론</li><li>작가와 시대 배경</li><li>주제 글쓰기</li></ul></dd></div>
+            <div><dt>목적</dt><dd>긴 글의 구조와 숨은 의미를 파악하고, 작품이 던지는 질문에 내 생각을 씁니다.</dd></div>
+            <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
+              <li>중학교 이후 독해에 필요한 주제 · 원리 파악력을 미리 다집니다.</li>
+              <li>완료 시제 같은 문법으로 길고 복잡한 문장을 풀어냅니다.</li>
+              <li>책 속 예시를 근거로 내 의견을 쓰는 힘이 생깁니다.</li>
+            </ul></dd></div>
+          </dl>
+          <button class="btn btn-line btn-sm" type="button" data-zoom="assets/quiz/quiz-b.webp" data-zoom-alt="Level B 퀴즈시트 앞장과 뒷장">앞장 · 뒷장 크게 보기</button>
+        </div>
+      </article>
+      <article class="qs-panel" id="qp-c" role="tabpanel" aria-labelledby="qt-c" hidden>
+        <div class="qs-pages">
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-c.webp" data-zoom-alt="Level C 퀴즈시트 앞장과 뒷장" aria-label="Level C 퀴즈시트 앞장 크게 보기"><img src="assets/quiz/quiz-c-1.webp" width="620" height="877" loading="lazy" alt="Level C 퀴즈시트 앞장. 어휘와 문법 활동"><span>앞장</span></button>
+          <button class="qs-page" type="button" data-zoom="assets/quiz/quiz-c.webp" data-zoom-alt="Level C 퀴즈시트 앞장과 뒷장" aria-label="Level C 퀴즈시트 뒷장 크게 보기"><img src="assets/quiz/quiz-c-2.webp" width="620" height="877" loading="lazy" alt="Level C 퀴즈시트 뒷장. 내용 이해 퀴즈"><span>뒷장</span></button>
+        </div>
+        <div class="qs-body">
+          <p class="qs-book">Greek Myths · The Adventures of Odysseus</p>
+          <h3>Level C<span>퀴즈가 에세이로 이어지는 비판적 읽기를 합니다.</span></h3>
+          <dl class="qs-rows">
+            <div><dt>퀴즈 유형</dt><dd><ul class="qs-chips"><li>챕터별 어휘 30개</li><li>과학 · 신화 배경 설명</li><li>원리 · 적용 문제</li><li>인물의 동기 · 의도 추론</li><li>문맥 어휘 고르기</li><li>찬반 근거 읽고 개요 쓰기</li></ul></dd></div>
+            <div><dt>목적</dt><dd>읽기와 쓰기를 한 흐름으로 연결합니다. 퀴즈의 마지막 문제가 그날의 글쓰기 주제로 이어집니다.</dd></div>
+            <div><dt>학습 효과</dt><dd><ul class="ticks qs-ticks">
+              <li>과학 · 교과 전문 용어와 서양 고전 교양을 함께 쌓습니다.</li>
+              <li>찬성과 반대 근거를 모두 읽고 한쪽을 골라 판단합니다(Critical Thinking).</li>
+              <li>개요를 세우는 과정까지 익혀 논리적인 에세이를 준비합니다.</li>
+            </ul></dd></div>
+          </dl>
+          <button class="btn btn-line btn-sm" type="button" data-zoom="assets/quiz/quiz-c.webp" data-zoom-alt="Level C 퀴즈시트 앞장과 뒷장">앞장 · 뒷장 크게 보기</button>
+        </div>
+      </article>
+    </div>
+
+    <div class="dev-head">
+      <h3>인터랙티브 워크시트 <span class="dev-badge">개발 중</span></h3>
+      <p>화면에서 직접 움직이고 고르며 풀어 보는 디지털 워크시트를 만들고 있습니다. 개발 중인 체험판을 미리 열어 보세요.</p>
+    </div>
     <div class="lgrid">
       <article class="lcard">
-        <span class="lcover"><img src="assets/img/lab-trolley.webp" width="900" height="540" loading="lazy" alt="Trolley Lab 화면: 선로와 전차, 사람 수를 정하는 슬라이더"></span>
+        <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-trolley.webp" width="900" height="540" loading="lazy" alt="Trolley Lab 화면: 선로와 전차, 사람 수를 정하는 슬라이더"></span>
         <div class="lbody">
           <h3>Trolley Lab</h3>
           <p class="lq">다섯 명을 구하려고 한 명을 희생해도 될까요?</p>
@@ -904,7 +1052,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
         </div>
       </article>
       <article class="lcard">
-        <span class="lcover"><img src="assets/img/lab-justice.webp" width="900" height="540" loading="lazy" alt="Justice Lab 화면: 조별 과제 점수를 나누는 공정 측정기"></span>
+        <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-justice.webp" width="900" height="540" loading="lazy" alt="Justice Lab 화면: 조별 과제 점수를 나누는 공정 측정기"></span>
         <div class="lbody">
           <h3>Justice Lab</h3>
           <p class="lq">한 명은 아무것도 안 했는데 모두 100점, 공정할까요?</p>
@@ -913,7 +1061,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
         </div>
       </article>
       <article class="lcard">
-        <span class="lcover"><img src="assets/img/lab-ubi.webp" width="900" height="540" loading="lazy" alt="UBI Lab 화면: Kelly Times 영자신문 기사와 듣기 버튼"></span>
+        <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-ubi.webp" width="900" height="540" loading="lazy" alt="UBI Lab 화면: Kelly Times 영자신문 기사와 듣기 버튼"></span>
         <div class="lbody">
           <h3>UBI Lab</h3>
           <p class="lq">기본소득은 AI로부터 일하는 사람들을 지켜 줄 수 있을까요?</p>
@@ -922,7 +1070,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
         </div>
       </article>
     </div>
-    <p class="lab-note">체험판은 수업에서 쓰는 워크시트의 일부입니다. Justice Lab과 UBI Lab은 소리가 나며, 음성은 AI 음성입니다.</p>
+    <p class="lab-note">개발 중인 체험판으로, 수업에서 쓰는 워크시트의 일부입니다. Justice Lab과 UBI Lab은 소리가 나며, 음성은 AI 음성입니다.</p>
   </div>
 </section>
 
@@ -1097,7 +1245,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
 
 <nav class="dock" aria-label="빠른 연락">
   <a href="tel:01098924088"><svg class="ic" aria-hidden="true"><use href="#i-phone"/></svg>전화</a>
-  <a href="#lab">워크시트</a>
+  <a href="#lab">퀴즈시트</a>
   <a class="main" href="#contact"><svg class="ic" aria-hidden="true"><use href="#i-chat"/></svg>상담 문의</a>
 </nav>
 
@@ -1331,6 +1479,40 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     rdlg.querySelector('.rdlg-scroll').scrollTop = 0;
   }
 
+  var qsTabs = $$('.qs-tab[data-qs]');
+  qsTabs.forEach(function (t, i) {
+    t.addEventListener('click', function () {
+      qsTabs.forEach(function (x) {
+        var on = x === t;
+        x.setAttribute('aria-selected', on ? 'true' : 'false');
+        x.tabIndex = on ? 0 : -1;
+        $('#qp-' + x.dataset.qs).hidden = !on;
+      });
+    });
+    t.tabIndex = i === 0 ? 0 : -1;
+    t.addEventListener('keydown', function (e) {
+      var j = -1;
+      if (e.key === 'ArrowRight') j = (i + 1) % qsTabs.length;
+      else if (e.key === 'ArrowLeft') j = (i - 1 + qsTabs.length) % qsTabs.length;
+      if (j >= 0) { e.preventDefault(); qsTabs[j].click(); qsTabs[j].focus(); }
+    });
+  });
+  function openZoom(src, alt) {
+    if (typeof rdlg.showModal !== 'function') { window.location.href = src; return; }
+    rdlgImg.src = src; rdlgImg.alt = alt || '';
+    rdlg.classList.add('wide');
+    rdlg.showModal();
+  }
+
+  $$('.report-more').forEach(function (b) {
+    b.addEventListener('click', function () {
+      var r = b.closest('.report'), on = !r.classList.contains('open');
+      r.classList.toggle('open', on);
+      b.setAttribute('aria-expanded', on ? 'true' : 'false');
+      b.textContent = on ? '설명 접기' : '설명 더 보기';
+    });
+  });
+
   [vdlg, ldlg, rdlg].forEach(function (d) {
     d.addEventListener('click', function (e) {
       if (e.target === d || e.target.closest('[data-close]')) d.close();
@@ -1339,11 +1521,12 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
 
   /* ---- 눌러서 여는 것들 ---- */
   document.addEventListener('click', function (e) {
-    var t = e.target.closest('[data-video],[data-lab],[data-copy],[data-report]');
+    var t = e.target.closest('[data-video],[data-lab],[data-copy],[data-report],[data-zoom]');
     if (!t) return;
     if (t.dataset.video) openVideo(t.dataset.video);
     else if (t.dataset.lab) openLab(t.dataset.lab);
     else if (t.dataset.report) openReport(t.dataset.report);
+    else if (t.dataset.zoom) openZoom(t.dataset.zoom, t.dataset.zoomAlt);
     else if (t.dataset.copy) copyText(t.dataset.copy, t.dataset.copied);
   });
 
