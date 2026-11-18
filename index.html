@@ -19,6 +19,18 @@
 <link rel="icon" href="assets/img/favicon-32.png?v=2" type="image/png" sizes="32x32">
 <link rel="shortcut icon" href="favicon.ico?v=2">
 <link rel="apple-touch-icon" href="assets/img/apple-touch-icon.png?v=2">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="apple-mobile-web-app-title" content="켈리영어">
+<script>
+/* 처음 열 때는 항상 맨 위(첫 화면)에서 시작: 저장된 #위치와 스크롤 기억을 지운다 */
+(function () {
+  try { if ('scrollRestoration' in history) history.scrollRestoration = 'manual'; } catch (e) {}
+  if (location.hash || location.search) {
+    try { history.replaceState(null, '', location.pathname); } catch (e) {}
+  }
+  window.addEventListener('load', function () { if (!location.hash) window.scrollTo(0, 0); });
+})();
+</script>
 <link rel="preload" href="assets/fonts/NotoSerifKR-Black.subset.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="assets/fonts/Pretendard-Regular.subset.woff2" as="font" type="font/woff2" crossorigin>
 <style>
@@ -406,17 +418,17 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
   .tp-cheer{position:absolute;right:4px;bottom:-4px;margin:0}
   .tp-cheer img{width:96px}
   .tp-why{padding-right:78px}
-  .tp-scene{aspect-ratio:auto;height:100%;min-height:200px}
-  .tp-note-book{left:5%;top:5%;width:90%;padding:8px 6px 8px 14px;font-size:.56rem;transform:rotate(-2deg)}
-  .tp-note-book::before{left:7px}
-  .nb-title{font-size:.66rem;flex-direction:column;gap:0}
-  .nb-title span{display:none}
-  .tp-units{display:none}
-  .nb-tip{display:none}
-  .nb-row{margin-top:4px}
-  .nb-again{display:none}
-  .tp-kelly{width:62%;right:-8%;bottom:-8%}
-  .tp-scene-cap{display:none}
+  /* 휴대전화: Before · After를 나란히, 3개월 수업 장면은 그 아래 넓게 */
+  .tps{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;row-gap:14px}
+  .tp.before{order:1}
+  .tp.after{order:2}
+  .tps::before{content:"↑ Before와 After는 같은 시험지 ↑";order:3;grid-column:1 / -1;text-align:center;margin-top:12px;font-size:.8rem;font-weight:700;color:var(--navy-deep)}
+  .tp.mid{order:4;grid-column:1 / -1;margin-top:10px}
+  .tp.mid .tp-tag{flex-direction:row;gap:8px}
+  .tp-same{display:none}
+  .tp-scene{aspect-ratio:auto;height:330px}
+  .tp-note-book{width:74%}
+  .tp-units{width:60%}
   .tp-gain-num strong{font-size:2.6rem}
 }
 @media (max-width:860px){
