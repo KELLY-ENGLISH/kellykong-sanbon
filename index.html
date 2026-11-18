@@ -719,6 +719,11 @@ button.vcard:hover .vplay{background:#fff}
 .checks label{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 15px;border:1.5px solid var(--line);border-radius:999px;font-weight:700;font-size:.94rem;cursor:pointer}
 .checks input{width:17px;height:17px;margin:0;accent-color:var(--navy)}
 .checks label:has(input:checked){background:var(--cream);border-color:var(--yellow-deep)}
+.checks label.pick{position:relative;background:#fff6cc;border:2px solid var(--yellow);box-shadow:0 0 0 0 rgba(253,211,30,.65);animation:pickPulse 2s ease-out infinite}
+.checks label.pick:has(input:checked){animation:none;background:var(--yellow);border-color:var(--yellow-deep)}
+.pick-tag{margin-left:2px;padding:2px 7px;border-radius:999px;background:var(--navy);color:#fff;font-size:.68rem;font-weight:800;letter-spacing:.04em;line-height:1.4}
+@keyframes pickPulse{0%{box-shadow:0 0 0 0 rgba(253,211,30,.7)}70%{box-shadow:0 0 0 10px rgba(253,211,30,0)}100%{box-shadow:0 0 0 0 rgba(253,211,30,0)}}
+@media (prefers-reduced-motion:reduce){.checks label.pick{animation:none}}
 .builder .btn-line{border-color:var(--navy);color:var(--navy)}
 .builder .btn-line:hover{background:rgba(38,53,111,.08)}
 .preview{white-space:pre-wrap;background:var(--paper);border-radius:14px;padding:16px 18px;font-size:.96rem;line-height:1.65;min-height:8.2em}
@@ -1493,7 +1498,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
         <fieldset class="field">
           <legend>궁금한 수업 <span class="legend-note">(복수 선택 가능)</span></legend>
           <div class="checks">
-            <label for="cC1"><input type="checkbox" id="cC1" name="cCourse" value="파닉스 무료체험">파닉스 무료체험</label>
+            <label for="cC1" class="pick"><input type="checkbox" id="cC1" name="cCourse" value="파닉스 무료체험">파닉스 무료체험<span class="pick-tag">FREE</span></label>
             <label for="cC2"><input type="checkbox" id="cC2" name="cCourse" value="원서 리딩">원서 리딩</label>
             <label for="cC3"><input type="checkbox" id="cC3" name="cCourse" value="문법 · 어휘">문법 · 어휘</label>
             <label for="cC4"><input type="checkbox" id="cC4" name="cCourse" value="영자신문 + 토론">영자신문 + 토론</label>
