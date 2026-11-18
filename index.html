@@ -326,10 +326,28 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .tp-score{position:absolute;right:10px;top:34px;display:grid;place-items:center;width:64px;height:64px;border:3px solid #d6262c;border-radius:50%;color:#d6262c;font-family:var(--font-display);font-weight:900;font-size:1.65rem;transform:rotate(-12deg);background:rgba(255,255,255,.85)}
 .tp.after .tp-score{width:72px;height:72px;font-size:1.8rem}
 .tp-cap{display:none}
+.tp-scene{position:relative;aspect-ratio:330/320;border-radius:16px;background:linear-gradient(160deg,#fff7d6,#fde68a);overflow:hidden;box-shadow:0 8px 20px rgba(25,34,79,.08)}
+.tp-note-book{position:absolute;left:7%;top:8%;width:68%;padding:12px 12px 14px 22px;border-radius:6px;background:repeating-linear-gradient(#fff 0 21px,#e7ecf6 21px 22px);box-shadow:0 6px 16px rgba(25,34,79,.15);transform:rotate(-3deg);font-size:.72rem;line-height:1.35;color:var(--ink)}
+.tp-note-book::before{content:"";position:absolute;left:12px;top:0;bottom:0;width:1.5px;background:#f2a7a7}
+.nb-title{display:flex;justify-content:space-between;align-items:baseline;gap:6px;margin-bottom:6px;font-weight:800;font-size:.86rem;color:var(--navy-deep)}
+.nb-title span{font-size:.66rem;font-weight:800;color:var(--navy)}
+.nb-row{display:flex;flex-wrap:wrap;align-items:center;gap:3px 5px;margin-top:6px}
+.nb-row b{font-weight:800;color:var(--navy)}
+.nb-row s{color:#d6262c}
+.nb-row i{font-style:normal;color:var(--ink-soft)}
+.nb-row em{font-style:normal;font-weight:700;color:var(--navy-deep)}
+.nb-ok{color:#1f9d55;font-weight:900}
+.nb-tip{margin:2px 0 0 26px;font-size:.62rem;color:#5b6170;font-style:italic}
+.nb-again{margin-top:10px;padding-top:6px;border-top:1px dashed var(--line);justify-content:space-between}
+.nb-again span{font-weight:800;color:#1f9d55}
+.tp-kelly{position:absolute;right:-2%;bottom:-4%;width:46%}
+.tp-kelly img{display:block;width:100%;height:auto}
+.tp-scene-cap{font-size:.86rem;line-height:1.5;color:var(--ink-soft)}
+.tp-scene-cap b{color:var(--navy-deep)}
 .tp-same{position:relative;margin:14px 0 0;height:30px}
 .tp-same::before{content:"";position:absolute;left:calc(100%/6);right:calc(100%/6);top:0;height:14px;border:2px dashed var(--navy);border-top:0;border-radius:0 0 10px 10px}
 .tp-same span{position:absolute;left:50%;top:4px;transform:translateX(-50%);background:#fff;padding:0 10px;font-size:.84rem;color:var(--navy-deep);white-space:nowrap}
-.tp-gain{margin-top:18px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px 36px;align-items:center;padding:22px 26px;border-radius:18px;background:var(--navy-deep);color:#fff}
+.tp-gain{position:relative;margin-top:18px;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:16px 36px;align-items:center;padding:22px 26px;border-radius:18px;background:var(--navy-deep);color:#fff}
 .tp-gain-num{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:900;line-height:1}
 .tp-gain-num span{font-size:2rem;opacity:.55}
 .tp-gain-num i{font-style:normal;font-size:1.6rem;color:var(--yellow)}
@@ -337,6 +355,8 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .tp-gain-num em{font-style:normal;font-family:var(--font-body,inherit);font-size:.9rem;font-weight:800;color:var(--navy-deep);background:var(--yellow);border-radius:999px;padding:4px 12px;margin-left:4px}
 .tp-why{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.96rem;line-height:1.55;color:rgba(255,255,255,.82)}
 .tp-why b{color:#fff}
+.tp-cheer{align-self:end;margin:-46px -6px -22px 0}
+.tp-cheer img{display:block;width:150px;height:auto}
 .tp-note{margin-top:10px;font-size:.8rem;color:var(--ink-soft)}
 @media (max-width:900px){
   .gsys-stats li{flex-direction:column;align-items:flex-start;gap:6px;padding:16px}
@@ -369,7 +389,20 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
   .tp-tag{flex-direction:column;gap:0;font-size:.86rem}
   .tp-tag span{font-size:.7rem}
   .tp-same span{font-size:.76rem}
-  .tp-gain{grid-template-columns:minmax(0,1fr);padding:20px}
+  .tp-gain{grid-template-columns:minmax(0,1fr);padding:20px;padding-top:24px}
+  .tp-cheer{position:absolute;right:4px;bottom:-4px;margin:0}
+  .tp-cheer img{width:96px}
+  .tp-why{padding-right:78px}
+  .tp-scene{aspect-ratio:auto;height:100%;min-height:200px}
+  .tp-note-book{left:5%;top:5%;width:90%;padding:8px 6px 8px 14px;font-size:.56rem;transform:rotate(-2deg)}
+  .tp-note-book::before{left:7px}
+  .nb-title{font-size:.66rem;flex-direction:column;gap:0}
+  .nb-title span{display:none}
+  .nb-tip{display:none}
+  .nb-row{margin-top:4px}
+  .nb-again{display:none}
+  .tp-kelly{width:62%;right:-8%;bottom:-8%}
+  .tp-scene-cap{display:none}
   .tp-gain-num strong{font-size:2.6rem}
 }
 @media (max-width:860px){
@@ -492,7 +525,7 @@ button.vcard:hover .vplay{background:#fff}
 .lab-head{display:flex;align-items:flex-end;justify-content:space-between;gap:20px;border-bottom:2px solid var(--navy);margin-bottom:clamp(26px,4vw,44px)}
 .lab-head .sec-head{margin-bottom:0;padding-bottom:clamp(22px,3vw,34px)}
 .lab-sticker{width:clamp(120px,15vw,170px);flex:none}
-.lgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px}
+.lgrid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px;max-width:860px}
 .lcard{display:flex;flex-direction:column;overflow:hidden;background:#fff;border:2px solid var(--navy);border-radius:22px}
 .lcover{display:block;aspect-ratio:5/3;border-bottom:2px solid var(--navy);background:var(--cream);overflow:hidden}
 .lcover img{display:block;width:100%;height:100%;object-fit:cover;object-position:0 0}
@@ -981,14 +1014,22 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <p class="tp-cap"><strong>70점</strong></p>
           </li>
           <li class="tp mid">
-            <p class="tp-tag">Mid-term<span>6주 · 중간 점검</span></p>
-            <div class="tp-sheet" aria-hidden="true">
-              <div class="tp-top"><b>Grammar Test</b><i>Starter · Unit 1–12</i></div>
-              <div class="tp-name">Name ______ &nbsp; Mid-term</div>
-              <ol class="tp-q"><li class="ok"><span class="tp-n">1</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">2</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">3</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">4</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="no"><span class="tp-n">5</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✗</span></li><li class="ok"><span class="tp-n">6</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">7</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">8</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="no"><span class="tp-n">9</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✗</span></li><li class="ok"><span class="tp-n">10</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li></ol>
-              <span class="tp-score">85</span>
+            <p class="tp-tag">3개월 수업<span>배우고 · 정리하고</span></p>
+            <div class="tp-scene">
+              <div class="tp-note-book" aria-hidden="true">
+                <p class="nb-title">나의 오답노트<span>✏️ 왜 틀렸을까?</span></p>
+                <div class="nb-row"><b>Q2</b><s>He have</s><i>→</i><em>He has</em><span class="nb-ok">✓</span></div>
+                <div class="nb-tip">왜? 주어가 3인칭 단수라서 has</div>
+                <div class="nb-row"><b>Q5</b><s>is cause</s><i>→</i><em>is caused</em><span class="nb-ok">✓</span></div>
+                <div class="nb-tip">왜? ‘~되다’는 be + p.p.</div>
+                <div class="nb-row nb-again"><b>다시 풀기</b><span>2 / 2 정답</span></div>
+              </div>
+              <picture class="tp-kelly">
+                <source media="(prefers-reduced-motion: reduce)" srcset="assets/emo/e13-s.webp">
+                <img src="assets/emo/e13.webp" width="360" height="360" loading="lazy" alt="머리띠를 두르고 응원하는 켈리콩 선생님. 화이팅!">
+              </picture>
             </div>
-            <p class="tp-cap"><strong>85점</strong></p>
+            <p class="tp-scene-cap">3개월 동안 수업으로 새로운 문법을 배우고, <b>틀린 문제는 왜 틀렸는지 정리하며</b> 실력을 쌓습니다.</p>
           </li>
           <li class="tp after">
             <p class="tp-tag">After Test<span>12주 · 마지막 수업</span></p>
@@ -1009,6 +1050,10 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <li><b>어머님께</b> 3개월 동안의 변화를 점수로 분명하게 보여 드립니다.</li>
             <li><b>다음 과정 전략</b>을 틀린 문항을 근거로 함께 세웁니다.</li>
           </ul>
+          <picture class="tp-cheer">
+            <source media="(prefers-reduced-motion: reduce)" srcset="assets/emo/e11-s.webp">
+            <img src="assets/emo/e11.webp" width="360" height="360" loading="lazy" alt="100점 시험지를 든 켈리콩 선생님. 100점!">
+          </picture>
         </div>
         <p class="tp-note">* 점수는 이해를 돕기 위한 예시입니다.</p>
       </div>
@@ -1262,34 +1307,25 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     </div>
     <div class="lgrid">
       <article class="lcard">
-        <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-trolley.webp" width="900" height="540" loading="lazy" alt="Trolley Lab 화면: 선로와 전차, 사람 수를 정하는 슬라이더"></span>
+        <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-justice.webp" width="900" height="540" loading="lazy" alt="Justice 원서특강 LAB 화면: 조별 과제 점수를 나누는 공정 측정기"></span>
         <div class="lbody">
-          <h3>Trolley Lab</h3>
-          <p class="lq">다섯 명을 구하려고 한 명을 희생해도 될까요?</p>
-          <ul class="lmeta"><li>Justice 특강</li><li>탭 4개</li><li>소리 없음</li></ul>
-          <button class="btn btn-navy" type="button" data-lab="trolley">Trolley Lab 열기</button>
-        </div>
-      </article>
-      <article class="lcard">
-        <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-justice.webp" width="900" height="540" loading="lazy" alt="Justice Lab 화면: 조별 과제 점수를 나누는 공정 측정기"></span>
-        <div class="lbody">
-          <h3>Justice Lab</h3>
+          <h3>Justice 원서특강 LAB</h3>
           <p class="lq">한 명은 아무것도 안 했는데 모두 100점, 공정할까요?</p>
           <ul class="lmeta"><li>Justice 특강</li><li>탭 5개</li><li>영어 음성 49개</li></ul>
-          <button class="btn btn-navy" type="button" data-lab="justice">Justice Lab 열기</button>
+          <button class="btn btn-navy" type="button" data-lab="justice">Justice 원서특강 LAB 열기</button>
         </div>
       </article>
       <article class="lcard">
-        <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-ubi.webp" width="900" height="540" loading="lazy" alt="UBI Lab 화면: Kelly Times 영자신문 기사와 듣기 버튼"></span>
+        <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-ubi.webp" width="900" height="540" loading="lazy" alt="영자신문 LAB 화면: Kelly Times 영자신문 기사와 듣기 버튼"></span>
         <div class="lbody">
-          <h3>UBI Lab</h3>
+          <h3>영자신문 LAB</h3>
           <p class="lq">기본소득은 AI로부터 일하는 사람들을 지켜 줄 수 있을까요?</p>
           <ul class="lmeta"><li>영자신문 + 토론</li><li>탭 6개</li><li>영어 음성 34개</li></ul>
-          <button class="btn btn-navy" type="button" data-lab="ubi">UBI Lab 열기</button>
+          <button class="btn btn-navy" type="button" data-lab="ubi">영자신문 LAB 열기</button>
         </div>
       </article>
     </div>
-    <p class="lab-note">개발 중인 체험판으로, 수업에서 쓰는 워크시트의 일부입니다. Justice Lab과 UBI Lab은 소리가 나며, 음성은 AI 음성입니다.</p>
+    <p class="lab-note">개발 중인 체험판으로, 수업에서 쓰는 워크시트의 일부입니다. 두 LAB 모두 소리가 나며, 음성은 AI 음성입니다.</p>
   </div>
 </section>
 
@@ -1394,7 +1430,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <label for="cC2"><input type="checkbox" id="cC2" name="cCourse" value="원서 리딩">원서 리딩</label>
             <label for="cC3"><input type="checkbox" id="cC3" name="cCourse" value="문법 · 어휘">문법 · 어휘</label>
             <label for="cC4"><input type="checkbox" id="cC4" name="cCourse" value="영자신문 + 토론">영자신문 + 토론</label>
-            <label for="cC5"><input type="checkbox" id="cC5" name="cCourse" value="Justice 특강">Justice 특강</label>
+            <label for="cC5"><input type="checkbox" id="cC5" name="cCourse" value="12월 원서특강">12월 원서특강</label>
           </div>
         </fieldset>
         <div class="field">
@@ -1466,7 +1502,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
 <dialog class="ldlg" id="ldlg" aria-labelledby="ldlgT">
   <div class="ldlg-bar on-navy">
     <strong id="ldlgT">워크시트</strong>
-    <a id="ldlgNew" href="worksheets/trolley-lab.html" target="_blank" rel="noopener">새 창에서 열기</a>
+    <a id="ldlgNew" href="worksheets/justice-lab.html" target="_blank" rel="noopener">새 창에서 열기</a>
     <button class="xbtn" type="button" data-close><svg aria-hidden="true"><use href="#i-x"/></svg>닫기</button>
   </div>
   <iframe id="ldlgF" title="워크시트 체험판" src="about:blank"></iframe>
@@ -1511,9 +1547,8 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
   var VCATS = { news: '이달의 소식', class: '수업 미리보기', story: '원장 이야기' };
 
   var LABS = {
-    trolley: { title: 'Trolley Lab 체험판', src: 'worksheets/trolley-lab.html' },
-    justice: { title: 'Justice Lab 체험판', src: 'worksheets/justice-lab.html' },
-    ubi: { title: 'UBI Lab 체험판', src: 'worksheets/ubi-lab.html' }
+    justice: { title: 'Justice 원서특강 LAB 체험판', src: 'worksheets/justice-lab.html' },
+    ubi: { title: '영자신문 LAB 체험판', src: 'worksheets/ubi-lab.html' }
   };
 
   /* 켈리콩 이모티콘 47종의 문구 (파일은 assets/emo/e01.webp ~ e47.webp) */

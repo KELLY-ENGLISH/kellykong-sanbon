@@ -10,7 +10,7 @@
 
 ```
 index.html              홈페이지 (여기만 고치면 됩니다)
-worksheets/             워크시트 체험판 3종 (Trolley Lab, Justice Lab, UBI Lab)
+worksheets/             워크시트 체험판 2종 (Justice 원서특강 LAB, 영자신문 LAB)
 assets/video/           홍보 영상(mp4)과 대표 장면(webp)
 assets/emo/             켈리콩 이모티콘 47종 (e01.webp = 움직임, e01-s.webp = 멈춘 그림)
 assets/img/             원장 사진, 워크시트 화면, 링크 미리보기 이미지, 북리포트 작성 예시(report-p.webp 등)
