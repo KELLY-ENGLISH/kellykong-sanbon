@@ -253,7 +253,7 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .gsys-stats span{font-weight:700;font-size:.98rem;line-height:1.4}
 .gsys-card{background:#fff;border-radius:22px;padding:clamp(20px,3vw,32px)}
 .gsys-h{display:flex;align-items:center;gap:12px;font-weight:800;font-size:1.12rem;color:var(--navy-deep);margin-bottom:22px}
-.gsys-num{font-family:var(--font-display);font-weight:900;font-size:.95rem;color:var(--navy-deep);background:var(--yellow);border-radius:8px;padding:3px 9px}
+.gsys-num{flex:none;white-space:nowrap;font-family:var(--font-display);font-weight:900;font-size:.95rem;color:var(--navy-deep);background:var(--yellow);border-radius:8px;padding:3px 9px}
 .gsys-cap{margin-top:16px;color:var(--ink-soft);font-size:.95rem}
 .gs-steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;align-items:end}
 .gs-steps li{display:flex;flex-direction:column;gap:2px;min-width:0}
@@ -281,20 +281,63 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
 .gy li{position:relative;transition:transform .2s ease,opacity .2s ease,box-shadow .2s ease}
 .gy-now{display:inline-flex;align-items:center;gap:6px;margin-bottom:6px;font-size:.78rem;font-weight:800;color:var(--navy-deep);background:var(--yellow);border-radius:999px;padding:3px 11px 3px 9px}
 .gy-now::before{content:"";width:8px;height:8px;border-radius:50%;background:var(--red)}
-.gy.has-now li:not(.now){opacity:.55}
-.gy li.now{opacity:1;transform:translateY(-6px);box-shadow:0 0 0 3px var(--yellow),0 14px 28px rgba(25,34,79,.22)}
+.gy li.now{transform:translateY(-6px);box-shadow:0 0 0 3px var(--yellow),0 14px 28px rgba(25,34,79,.22)}
+@media (hover:hover){
+  .gy li{cursor:default}
+  .gy li:hover{z-index:2;transform:translateY(-8px) scale(1.04);box-shadow:0 18px 34px rgba(25,34,79,.25)}
+  .gy li.now:hover{box-shadow:0 0 0 3px var(--yellow),0 18px 34px rgba(25,34,79,.25)}
+  .gy-term:hover{background:var(--navy-deep)}
+}
+.gy-ruler{position:relative;display:grid;grid-template-columns:repeat(12,minmax(0,1fr));margin:0 0 16px;padding-top:30px;border-bottom:2px solid var(--line)}
+.gy-ruler span{position:relative;padding-bottom:8px;text-align:center;font-size:.76rem;font-weight:700;color:var(--ink-soft)}
+.gy-ruler span::after{content:"";position:absolute;left:50%;bottom:-5px;width:8px;height:8px;margin-left:-4px;border-radius:50%;background:var(--line)}
+.gy-ruler span.run{color:var(--navy-deep)}
+.gy-ruler span.run::after{background:var(--navy)}
+.gy-ruler span.sp{color:var(--yellow-deep)}
+.gy-ruler span.sp::after{background:var(--yellow-deep)}
+.gy-ruler span.on{color:var(--navy-deep)}
+.gy-ruler span.on::after{width:14px;height:14px;bottom:-8px;margin-left:-7px;background:var(--red);box-shadow:0 0 0 4px rgba(214,38,44,.18)}
+.gy-ruler span.on::before{content:"지금";position:absolute;left:50%;bottom:100%;transform:translateX(-50%);margin-bottom:2px;font-size:.72rem;font-weight:800;color:#fff;background:var(--red);border-radius:999px;padding:2px 9px;white-space:nowrap}
+@media (max-width:600px){.gy-ruler span{font-size:.6rem;letter-spacing:-.04em}}
 .gy-sp.now{box-shadow:0 0 0 3px var(--navy),0 14px 28px rgba(25,34,79,.2)}
 .gy li.next .gy-now{background:#fff;box-shadow:inset 0 0 0 2px var(--navy)}
 .gy li.next .gy-now::before{background:var(--navy)}
 @media (prefers-reduced-motion:no-preference){.gy-now::before{animation:gyPulse 1.6s ease-in-out infinite}}
 @keyframes gyPulse{0%,100%{opacity:1}50%{opacity:.25}}
-.gt{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:28px}
-.gt li{position:relative;display:flex;flex-direction:column;gap:2px;padding:14px 16px;border-radius:14px;background:var(--paper)}
-.gt li:not(:last-child)::after{content:"";position:absolute;right:-20px;top:50%;width:12px;height:12px;border-top:3px solid var(--navy);border-right:3px solid var(--navy);transform:translateY(-50%) rotate(45deg)}
-.gt-k{font-size:.8rem;font-weight:700;color:var(--ink-soft)}
-.gt strong{font-weight:800;color:var(--navy-deep)}
-.gt-out{background:var(--yellow)!important}
-.gt-out .gt-k{color:var(--navy-deep)}
+.gt-lead{margin:-8px 0 22px;color:var(--ink-soft);line-height:1.7;max-width:46em}
+.gt-lead b{color:var(--navy-deep)}
+.tps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(14px,2.4vw,28px);align-items:end}
+.tp{display:flex;flex-direction:column;gap:10px;min-width:0}
+.tp-tag{display:flex;align-items:baseline;gap:8px;font-weight:800;color:var(--navy-deep)}
+.tp-tag span{font-size:.8rem;font-weight:700;color:var(--ink-soft)}
+.tp-sheet{position:relative;background:#fff;border:1.5px solid var(--line);border-radius:6px;padding:16px 16px 18px;box-shadow:0 8px 20px rgba(25,34,79,.08);transform:rotate(-1deg)}
+.tp.mid .tp-sheet{transform:rotate(.6deg)}
+.tp.after .tp-sheet{transform:rotate(-.4deg) translateY(-6px);box-shadow:0 0 0 3px var(--yellow),0 16px 30px rgba(25,34,79,.16)}
+.tp-top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;padding-bottom:8px;border-bottom:2px solid var(--navy-deep)}
+.tp-top b{font-weight:800;font-size:.9rem;color:var(--navy-deep)}
+.tp-top i{font-style:normal;font-size:.68rem;color:var(--ink-soft);white-space:nowrap}
+.tp-name{margin:8px 0 6px;font-size:.68rem;color:var(--ink-soft)}
+.tp-q{list-style:none;margin:0;padding:0 0 0;display:grid;gap:5px}
+.tp-q li:first-child .tp-mk{visibility:hidden}
+.tp-q li{display:grid;grid-template-columns:1.2em 1fr 1.1em;align-items:center;gap:6px;font-size:.66rem;color:var(--ink-soft)}
+.tp-line{height:5px;border-radius:3px;background:#e9e7e0}
+.tp-mk{font-weight:900;font-size:.9rem;line-height:1;text-align:center;color:#d6262c}
+.tp-q li.no .tp-line{background:repeating-linear-gradient(90deg,#e9e7e0 0 8px,transparent 8px 11px)}
+.tp-score{position:absolute;right:10px;top:34px;display:grid;place-items:center;width:64px;height:64px;border:3px solid #d6262c;border-radius:50%;color:#d6262c;font-family:var(--font-display);font-weight:900;font-size:1.65rem;transform:rotate(-12deg);background:rgba(255,255,255,.85)}
+.tp.after .tp-score{width:72px;height:72px;font-size:1.8rem}
+.tp-cap{display:none}
+.tp-same{position:relative;margin:14px 0 0;height:30px}
+.tp-same::before{content:"";position:absolute;left:calc(100%/6);right:calc(100%/6);top:0;height:14px;border:2px dashed var(--navy);border-top:0;border-radius:0 0 10px 10px}
+.tp-same span{position:absolute;left:50%;top:4px;transform:translateX(-50%);background:#fff;padding:0 10px;font-size:.84rem;color:var(--navy-deep);white-space:nowrap}
+.tp-gain{margin-top:18px;display:grid;grid-template-columns:auto minmax(0,1fr);gap:16px 36px;align-items:center;padding:22px 26px;border-radius:18px;background:var(--navy-deep);color:#fff}
+.tp-gain-num{display:flex;align-items:center;gap:12px;font-family:var(--font-display);font-weight:900;line-height:1}
+.tp-gain-num span{font-size:2rem;opacity:.55}
+.tp-gain-num i{font-style:normal;font-size:1.6rem;color:var(--yellow)}
+.tp-gain-num strong{font-size:3rem;color:var(--yellow)}
+.tp-gain-num em{font-style:normal;font-family:var(--font-body,inherit);font-size:.9rem;font-weight:800;color:var(--navy-deep);background:var(--yellow);border-radius:999px;padding:4px 12px;margin-left:4px}
+.tp-why{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:.96rem;line-height:1.55;color:rgba(255,255,255,.82)}
+.tp-why b{color:#fff}
+.tp-note{margin-top:10px;font-size:.8rem;color:var(--ink-soft)}
 @media (max-width:900px){
   .gsys-stats li{flex-direction:column;align-items:flex-start;gap:6px;padding:16px}
   .gy{grid-template-columns:repeat(2,minmax(0,1fr))}
@@ -310,8 +353,24 @@ svg.ic{width:1.15em;height:1.15em;flex:none}
   .gs-bar{margin:0;height:26px;width:calc(var(--i) * 20%);border-radius:4px 12px 12px 4px}
   .gy{grid-template-columns:minmax(0,1fr)}
   .gy li:first-child{grid-column:auto}
-  .gt{grid-template-columns:minmax(0,1fr);gap:22px}
-  .gt li:not(:last-child)::after{right:auto;left:50%;top:auto;bottom:-17px;transform:translateX(-50%) rotate(135deg)}
+  .tps{gap:8px}
+  .tp-sheet{padding:9px 8px 10px;transform:none!important}
+  .tp-top{flex-direction:column;gap:0;padding-bottom:5px}
+  .tp-top b{font-size:.7rem}
+  .tp-top i,.tp-name{display:none}
+  .tp-q{margin-top:6px;gap:4px}
+  .tp-q li{grid-template-columns:1fr .9em;gap:4px}
+  .tp-n{display:none}
+  .tp-mk{font-size:.72rem}
+  .tp-score{top:auto;bottom:-14px;right:50%;transform:translateX(50%) rotate(-10deg);width:50px;height:50px;font-size:1.25rem}
+  .tp.after .tp-score{width:54px;height:54px;font-size:1.3rem}
+  .tps{margin-bottom:6px}
+  .tp-same{margin-top:34px}
+  .tp-tag{flex-direction:column;gap:0;font-size:.86rem}
+  .tp-tag span{font-size:.7rem}
+  .tp-same span{font-size:.76rem}
+  .tp-gain{grid-template-columns:minmax(0,1fr);padding:20px}
+  .tp-gain-num strong{font-size:2.6rem}
 }
 @media (max-width:860px){
   .cur-grid{grid-template-columns:minmax(0,1fr);align-items:stretch}
@@ -875,7 +934,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
       <div class="gsys-head">
         <p class="gsys-eyebrow">KELLY GRAMMAR SYSTEM</p>
         <h3 class="gsys-title">체계적인 문법 수업 &amp; 방학 특강</h3>
-        <p class="gsys-lead">문법은 모든 단계의 필수 수업입니다. 5단계 레벨로 나눈 문법 수업을 1년에 세 번, 3개월씩 집중해서 진행합니다. 7월과 12월에는 다양한 특강으로 독서 수업에서 다룰 수 없었던 영역의 역량을 집중적으로 키웁니다.</p>
+        <p class="gsys-lead">5단계 레벨로 나눈 문법 수업을 1년에 세 번, 3개월씩 집중해서 진행합니다. 7월과 12월에는 다양한 특강으로 독서 수업에서 다룰 수 없었던 영역의 역량을 집중적으로 키웁니다.</p>
       </div>
       <ul class="gsys-stats">
         <li><strong>5<small>단계</small></strong><span>레벨별 문법 반</span></li>
@@ -897,6 +956,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
 
       <div class="gsys-card">
         <h4 class="gsys-h"><span class="gsys-num">02</span>1년 과정 한눈에 보기</h4>
+        <div class="gy-ruler" aria-hidden="true"><span data-m="1">1월</span><span data-m="2">2월</span><span data-m="3">3월</span><span data-m="4">4월</span><span data-m="5">5월</span><span data-m="6">6월</span><span data-m="7">7월</span><span data-m="8">8월</span><span data-m="9">9월</span><span data-m="10">10월</span><span data-m="11">11월</span><span data-m="12">12월</span></div>
         <ol class="gy">
           <li class="gy-term" data-months="1,2,3"><span class="gy-when">1월 ~ 3월</span><strong>정규 1차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
           <li class="gy-term" data-months="4,5,6"><span class="gy-when">4월 ~ 6월</span><strong>정규 2차</strong><span class="gy-len">3개월 · 12주</span><span class="gy-lv" aria-label="5개 레벨 반 운영"><span>생애 첫 문법</span><span>STARTER</span><span>중1 문법</span><span>중2 문법</span><span>중3 문법</span></span></li>
@@ -907,13 +967,50 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
       </div>
 
       <div class="gsys-card">
-        <h4 class="gsys-h"><span class="gsys-num">03</span>시작과 끝, 같은 테스트로 확인합니다</h4>
-        <ol class="gt">
-          <li><span class="gt-k">첫 수업</span><strong>진단 테스트</strong></li>
-          <li><span class="gt-k">3개월</span><strong>레벨 맞춤 수업</strong></li>
-          <li><span class="gt-k">마지막 수업</span><strong>같은 테스트</strong></li>
-          <li class="gt-out"><span class="gt-k">결과</span><strong>성장을 수치로 확인</strong></li>
+        <h4 class="gsys-h"><span class="gsys-num">03</span>점수로 보이는 성장, 같은 시험지로 확인합니다</h4>
+        <p class="gt-lead">독서 수업이 아이의 생각을 글과 말로 살피는 <b>정성 평가</b>라면, 문법 수업은 같은 시험지로 실력을 숫자로 확인하는 <b>정량 평가</b>입니다.</p>
+        <ol class="tps">
+          <li class="tp before">
+            <p class="tp-tag">Before Test<span>첫 수업 · 진단</span></p>
+            <div class="tp-sheet" aria-hidden="true">
+              <div class="tp-top"><b>Grammar Test</b><i>Starter · Unit 1–12</i></div>
+              <div class="tp-name">Name ______ &nbsp; Before</div>
+              <ol class="tp-q"><li class="ok"><span class="tp-n">1</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="no"><span class="tp-n">2</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✗</span></li><li class="ok"><span class="tp-n">3</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">4</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="no"><span class="tp-n">5</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✗</span></li><li class="ok"><span class="tp-n">6</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="no"><span class="tp-n">7</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✗</span></li><li class="ok"><span class="tp-n">8</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">9</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">10</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li></ol>
+              <span class="tp-score">70</span>
+            </div>
+            <p class="tp-cap"><strong>70점</strong></p>
+          </li>
+          <li class="tp mid">
+            <p class="tp-tag">Mid-term<span>6주 · 중간 점검</span></p>
+            <div class="tp-sheet" aria-hidden="true">
+              <div class="tp-top"><b>Grammar Test</b><i>Starter · Unit 1–12</i></div>
+              <div class="tp-name">Name ______ &nbsp; Mid-term</div>
+              <ol class="tp-q"><li class="ok"><span class="tp-n">1</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">2</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">3</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">4</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="no"><span class="tp-n">5</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✗</span></li><li class="ok"><span class="tp-n">6</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">7</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">8</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="no"><span class="tp-n">9</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✗</span></li><li class="ok"><span class="tp-n">10</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li></ol>
+              <span class="tp-score">85</span>
+            </div>
+            <p class="tp-cap"><strong>85점</strong></p>
+          </li>
+          <li class="tp after">
+            <p class="tp-tag">After Test<span>12주 · 마지막 수업</span></p>
+            <div class="tp-sheet" aria-hidden="true">
+              <div class="tp-top"><b>Grammar Test</b><i>Starter · Unit 1–12</i></div>
+              <div class="tp-name">Name ______ &nbsp; After</div>
+              <ol class="tp-q"><li class="ok"><span class="tp-n">1</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">2</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">3</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">4</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">5</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">6</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">7</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">8</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">9</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li><li class="ok"><span class="tp-n">10</span><span class="tp-line"></span><span class="tp-mk" aria-hidden="true">✓</span></li></ol>
+              <span class="tp-score">100</span>
+            </div>
+            <p class="tp-cap"><strong>100점</strong></p>
+          </li>
         </ol>
+        <div class="tp-same" aria-hidden="true"><span>Before Test와 After Test는 <b>같은 시험지</b></span></div>
+        <div class="tp-gain">
+          <p class="tp-gain-num"><span>70</span><i aria-hidden="true">→</i><strong>100</strong><em>+30점</em></p>
+          <ul class="tp-why">
+            <li><b>아이 스스로</b> 같은 문제를 다시 풀며 늘어난 실력을 직접 확인합니다.</li>
+            <li><b>어머님께</b> 3개월 동안의 변화를 점수로 분명하게 보여 드립니다.</li>
+            <li><b>다음 과정 전략</b>을 틀린 문항을 근거로 함께 세웁니다.</li>
+          </ul>
+        </div>
+        <p class="tp-note">* 점수는 이해를 돕기 위한 예시입니다.</p>
       </div>
     </div>
   </div>
@@ -1604,6 +1701,11 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
   (function () {
     var gy = $('.gy'); if (!gy) return;
     var items = $$('li[data-months]', gy), m = new Date().getMonth() + 1, hit = null, label = '지금 진행 중';
+    $$('.gy-ruler span').forEach(function (sp) {
+      var mm = sp.dataset.m;
+      items.forEach(function (li) { if (li.dataset.months.split(',').indexOf(mm) >= 0) sp.classList.add(li.classList.contains('gy-sp') ? 'sp' : 'run'); });
+      if (+mm === m) sp.classList.add('on');
+    });
     items.forEach(function (li) { if (li.dataset.months.split(',').indexOf(String(m)) >= 0) hit = li; });
     if (!hit) {
       for (var k = 1; k <= 12 && !hit; k++) {
