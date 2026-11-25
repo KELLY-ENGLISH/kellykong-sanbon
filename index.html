@@ -713,7 +713,7 @@ button.vcard:hover .vplay{background:#fff}
 .field > label,.field > legend{font-weight:700;font-size:.97rem;padding:0}
 .field legend{margin-bottom:9px}
 .legend-note{font-weight:500;font-size:.85rem;color:var(--ink-soft,#6b7280);margin-left:4px}
-.builder select,.builder input[type="text"]{width:100%;min-height:50px;padding:0 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
+.builder select,.builder input[type="text"],.builder input[type="tel"]{width:100%;min-height:50px;padding:0 14px;border:1.5px solid var(--line);border-radius:12px;background:#fff}
 .builder select:focus-visible,.builder input:focus-visible{outline-offset:1px}
 .checks{display:flex;flex-wrap:wrap;gap:8px}
 .checks label{display:inline-flex;align-items:center;gap:8px;min-height:42px;padding:0 15px;border:1.5px solid var(--line);border-radius:999px;font-weight:700;font-size:.94rem;cursor:pointer}
@@ -1483,7 +1483,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
   <div class="wrap">
     <div class="sec-head">
       <h2 id="contact-title">상담 문의</h2>
-      <p>아이 학년과 궁금한 수업을 고르면 보낼 메시지가 만들어집니다. ‘카카오 채널톡으로 상담하기’를 누르면 메시지가 복사되고 채팅창이 열려요. 붙여 넣어 보내 주세요.</p>
+      <p>아이 학년, 어머님 연락처, 궁금한 수업을 적으면 보낼 메시지가 만들어집니다. ‘카카오 채널톡으로 상담하기’를 누르면 메시지가 복사되고 채팅창이 열려요. 붙여 넣어 보내 주세요.</p>
     </div>
     <div class="contact-grid">
       <form class="builder" id="builder" novalidate>
@@ -1494,6 +1494,10 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <option>초등 1학년</option><option>초등 2학년</option><option>초등 3학년</option><option>초등 4학년</option><option>초등 5학년</option><option>초등 6학년</option>
             <option>중학교 1학년</option><option>중학교 2학년</option><option>중학교 3학년</option><option>그 밖의 학년</option>
           </select>
+        </div>
+        <div class="field">
+          <label for="cPhone">어머님 연락처</label>
+          <input type="tel" id="cPhone" maxlength="20" inputmode="tel" placeholder="예: 010-1234-5678" autocomplete="tel">
         </div>
         <fieldset class="field">
           <legend>궁금한 수업 <span class="legend-note">(복수 선택 가능)</span></legend>
@@ -1511,7 +1515,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
         </div>
         <div class="field">
           <label id="cPrevLabel" for="cPreview">보낼 메시지</label>
-          <output class="preview" id="cPreview" for="cGrade cMemo" aria-labelledby="cPrevLabel"></output>
+          <output class="preview" id="cPreview" for="cGrade cPhone cMemo" aria-labelledby="cPrevLabel"></output>
         </div>
         <div class="c-acts">
           <button class="btn btn-navy" type="button" id="cCopy"><svg class="ic" aria-hidden="true"><use href="#i-copy"/></svg>메시지 복사</button>
@@ -1949,9 +1953,11 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     var compose = function () {
       var grade = $('#cGrade').value;
       var picks = $$('input[name="cCourse"]:checked', builder).map(function (i) { return i.value; });
+      var phone = $('#cPhone').value.trim();
       var memo = $('#cMemo').value.trim();
       var lines = ['안녕하세요, 켈리영어독서학원 홈페이지를 보고 문의드립니다.'];
-      if (grade) lines.push('아이 학년: ' + grade);
+      lines.push('아이 학년: ' + (grade || '(적어 주세요)'));
+      lines.push('어머님 연락처: ' + (phone || '(적어 주세요)'));
       if (picks.length) lines.push('궁금한 수업: ' + picks.join(', '));
       if (memo) lines.push('남기는 말: ' + memo);
       lines.push('상담 가능한 시간을 알려 주시면 감사하겠습니다.');
