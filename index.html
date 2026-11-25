@@ -693,6 +693,7 @@ button.vcard:hover .vplay{background:#fff}
 .faq-fee tbody th{font-weight:700;color:var(--ink)}
 .faq-fee td:last-child,.faq-fee th:last-child{text-align:right}
 .faq-fee strong{color:var(--navy-deep)}
+.faq-fee .fee-grp th{padding:14px 6px 6px;font-size:.82rem;font-weight:700;letter-spacing:.02em;color:var(--navy-deep);text-align:left;border-bottom:1px solid var(--line)}
 .faq-tel{color:var(--navy-deep);font-weight:700;text-decoration:underline;text-underline-offset:3px}
 .faq-call{display:flex;flex-wrap:wrap;gap:8px;margin:0 2px 16px}
 .faq-a:has(+ .faq-call){padding-bottom:12px}
@@ -1452,6 +1453,13 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
         <table class="faq-fee">
           <thead><tr><th scope="col">수업 횟수</th><th scope="col">수업 시간</th><th scope="col">월 수강료</th></tr></thead>
           <tbody>
+            <tr class="fee-grp"><th scope="rowgroup" colspan="3">파닉스 · 초등 3학년 이하</th></tr>
+            <tr><th scope="row">파닉스 주 3회</th><td>회당 60분</td><td><strong>21만 원</strong></td></tr>
+            <tr><th scope="row">파닉스 주 4회</th><td>회당 60분</td><td><strong>25만 원</strong></td></tr>
+            <tr><th scope="row">파닉스 주 5회</th><td>회당 60분</td><td><strong>28만 원</strong></td></tr>
+          </tbody>
+          <tbody>
+            <tr class="fee-grp"><th scope="rowgroup" colspan="3">정규 과정</th></tr>
             <tr><th scope="row">주 3회</th><td>회당 90분</td><td><strong>28만 원</strong></td></tr>
             <tr><th scope="row">주 4회</th><td>회당 90분</td><td><strong>31만 원</strong></td></tr>
             <tr><th scope="row">주 5회</th><td>회당 90분</td><td><strong>33만 원</strong></td></tr>
