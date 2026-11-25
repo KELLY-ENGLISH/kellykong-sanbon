@@ -577,6 +577,35 @@ button.vcard:hover .vplay{background:#fff}
 .lmeta{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
 .lmeta li{padding:2px 11px;border-radius:999px;background:var(--paper);font-size:.82rem;font-weight:700;color:var(--ink-soft)}
 .lbody .btn{margin-top:auto;align-self:flex-start}
+/* 파닉스 LAB 강조 카드 */
+.lgrid{max-width:1000px;grid-template-columns:minmax(0,1.35fr) minmax(0,1fr);align-items:start}
+.lfeat{border:3px solid var(--navy-deep);box-shadow:0 0 0 6px var(--yellow),0 18px 40px rgba(27,35,80,.22);animation:featGlow 2.4s ease-in-out infinite}
+@keyframes featGlow{50%{box-shadow:0 0 0 10px #ffe873,0 22px 46px rgba(27,35,80,.28)}}
+.pcover{position:relative;width:100%;padding:0;border:0;border-bottom:3px solid var(--navy-deep);cursor:pointer;background:repeating-conic-gradient(from 0deg at 72% 62%,#3b3cf0 0 9deg,#2a2bd8 9deg 18deg);font:inherit;color:#fff;text-align:left;overflow:hidden}
+.pcover img{position:absolute;right:4%;bottom:-6%;width:46%;height:auto;object-fit:contain;transition:transform .3s}
+.pcover:hover img,.pcover:focus-visible img{transform:scale(1.07) rotate(-3deg)}
+.p-new{position:absolute;left:14px;top:14px;background:#ff3d8b;color:#fff;font-weight:900;font-size:.85rem;padding:4px 12px;border-radius:10px;transform:rotate(-4deg);box-shadow:0 4px 0 #b3125a}
+.p-word{position:absolute;left:6%;top:24%;font-family:var(--font-display);font-weight:900;font-size:clamp(2rem,5vw,3.2rem);line-height:.95;color:#fff;text-shadow:0 5px 0 #15168f}
+.p-word b{color:var(--yellow)}
+.p-word i{font-style:normal;display:inline-block;margin-top:6px;background:var(--yellow);color:var(--navy-deep);text-shadow:none;padding:2px 14px;border-radius:12px;font-size:.8em}
+.p-tags{position:absolute;left:6%;bottom:8%;display:flex;flex-wrap:wrap;gap:6px;max-width:52%}
+.p-tags span{background:#1fe0a8;color:#0b1f5c;font-weight:800;font-size:.78rem;padding:3px 10px;border-radius:999px}
+.p-tags span:nth-child(2){background:#fff;color:#2a2bd8}
+.p-tags span:nth-child(3){background:#ff3d8b;color:#fff}
+.p-acts{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:10px 16px}
+.lfeat .lbody .btn{margin-top:0}
+.p-go{font-size:1.06rem;padding-inline:24px;animation:pickPulse 2s ease-out infinite}
+.p-new-win{font-size:.9rem;font-weight:700;color:var(--ink-soft);text-underline-offset:4px}
+.hero-lab{display:flex;align-items:center;gap:10px;width:fit-content;max-width:calc(100% - 140px);margin-top:14px;padding:12px 16px;border:2px solid var(--navy-deep);border-radius:16px;background:#2a2bd8;color:#fff;font:inherit;font-size:.98rem;text-align:left;cursor:pointer;box-shadow:0 5px 0 var(--navy-deep);animation:pickPulse 2s ease-out infinite}
+.hero-lab strong{color:var(--yellow)}
+.hero-lab span:nth-child(2){flex:1}
+.hl-new{background:#ff3d8b;color:#fff;font-weight:900;font-size:.78rem;padding:3px 9px;border-radius:8px}
+@media (max-width:760px){.hero-lab{width:100%;max-width:none}}
+@media (prefers-reduced-motion:reduce){.hero-lab{animation:none}}
+.p-hl{color:var(--navy-deep);background:linear-gradient(transparent 55%,var(--yellow) 55%)}
+@media (max-width:760px){.lgrid{grid-template-columns:minmax(0,1fr)}}
+@media (prefers-reduced-motion:reduce){.lfeat,.p-go{animation:none}}
+
 .qs{margin-bottom:clamp(48px,6vw,80px)}
 .qs-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
 .qs-tab{min-height:46px;padding:0 20px;border-radius:999px;border:2px solid var(--navy);background:#fff;color:var(--navy);font-weight:800;font-size:1rem;cursor:pointer}
@@ -854,6 +883,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
             <a class="btn btn-navy" href="#contact">상담 문의하기</a>
             <a class="btn btn-line" href="#lab">퀴즈시트 보기</a>
           </div>
+          <button class="hero-lab" type="button" data-lab="phonics"><span class="hl-new">NEW</span><span><strong>파닉스 LAB 체험판</strong> 지금 눌러 보기</span><span aria-hidden="true">👆</span></button>
           <dl class="where">
             <div><dt>위치</dt><dd>군포시 광정로 70 유공빌딩</dd></div>
             <div><dt>운영</dt><dd><span class="nb">월·수·금 오후 2시 ~ 8시</span><br><span class="nb">화·목 오후 2시 ~ 9시</span></dd></div>
@@ -1376,9 +1406,26 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
 
     <div class="dev-head">
       <h3>인터랙티브 워크시트 <span class="dev-badge">개발 중</span></h3>
-      <p>화면에서 직접 움직이고 고르며 풀어 보는 디지털 워크시트를 만들고 있습니다. 개발 중인 체험판을 미리 열어 보세요.</p>
+      <p>화면에서 직접 움직이고 고르며 풀어 보는 디지털 워크시트입니다. <strong class="p-hl">새로 나온 파닉스 LAB을 지금 눌러 체험해 보세요!</strong></p>
     </div>
     <div class="lgrid">
+      <article class="lcard lfeat">
+        <button class="lcover pcover" type="button" data-lab="phonics" aria-label="파닉스 LAB 체험판 열기">
+          <span class="p-new">NEW · 무료 체험</span>
+          <span class="p-word" aria-hidden="true"><b>P</b>honics<br><i>LAB</i></span>
+          <img src="assets/emo/e32.webp" width="360" height="360" loading="lazy" alt="책을 펼쳐 들고 책 읽자 하는 켈리콩">
+          <span class="p-tags" aria-hidden="true"><span>게임으로 익히고</span><span>소리로 듣고</span><span>원서로 읽고!</span></span>
+        </button>
+        <div class="lbody">
+          <h3>켈리 파닉스 LAB 체험판</h3>
+          <p class="lq">원서 속 단어를 소리로 듣고, 게임으로 익히고, 문장까지 맞춰 봐요!</p>
+          <ul class="lmeta"><li>Level P · 파닉스</li><li>초등 저학년</li><li>태블릿 · 휴대폰 OK</li></ul>
+          <div class="p-acts">
+            <button class="btn btn-yellow p-go" type="button" data-lab="phonics">👆 지금 눌러서 체험하기</button>
+            <a class="p-new-win" href="https://kelly-english.github.io/KELLY-PHONICS-LAB/trial.html" target="_blank" rel="noopener">새 창에서 열기 →</a>
+          </div>
+        </div>
+      </article>
       <article class="lcard">
         <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-justice.webp" width="900" height="540" loading="lazy" alt="Justice 원서특강 LAB 화면: 조별 과제 점수를 나누는 공정 측정기"></span>
         <div class="lbody">
@@ -1388,17 +1435,8 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
           <button class="btn btn-navy" type="button" data-lab="justice">Justice 원서특강 LAB 열기</button>
         </div>
       </article>
-      <article class="lcard">
-        <span class="lcover"><span class="dev-badge on-cover">개발 중</span><img src="assets/img/lab-ubi.webp" width="900" height="540" loading="lazy" alt="영자신문 LAB 화면: Kelly Times 영자신문 기사와 듣기 버튼"></span>
-        <div class="lbody">
-          <h3>영자신문 LAB</h3>
-          <p class="lq">기본소득은 AI로부터 일하는 사람들을 지켜 줄 수 있을까요?</p>
-          <ul class="lmeta"><li>영자신문 + 토론</li><li>탭 6개</li><li>영어 음성 34개</li></ul>
-          <button class="btn btn-navy" type="button" data-lab="ubi">영자신문 LAB 열기</button>
-        </div>
-      </article>
     </div>
-    <p class="lab-note">개발 중인 체험판으로, 수업에서 쓰는 워크시트의 일부입니다. 두 LAB 모두 소리가 나며, 음성은 AI 음성입니다.</p>
+    <p class="lab-note">개발 중인 체험판으로, 수업에서 쓰는 워크시트의 일부입니다. LAB마다 소리가 나니 볼륨을 켜 주세요. 음성은 AI 음성입니다.</p>
   </div>
 </section>
 
@@ -1597,7 +1635,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
     <a id="ldlgNew" href="worksheets/justice-lab.html" target="_blank" rel="noopener">새 창에서 열기</a>
     <button class="xbtn" type="button" data-close><svg aria-hidden="true"><use href="#i-x"/></svg>닫기</button>
   </div>
-  <iframe id="ldlgF" title="워크시트 체험판" src="about:blank"></iframe>
+  <iframe id="ldlgF" title="워크시트 체험판" src="about:blank" allow="autoplay; fullscreen"></iframe>
 </dialog>
 
 <div class="toast" id="toast" role="status" aria-live="polite"></div>
@@ -1640,7 +1678,7 @@ dialog::backdrop{background:rgba(15,20,48,.86)}
 
   var LABS = {
     justice: { title: 'Justice 원서특강 LAB 체험판', src: 'worksheets/justice-lab.html' },
-    ubi: { title: '영자신문 LAB 체험판', src: 'worksheets/ubi-lab.html' }
+    phonics: { title: '켈리 파닉스 LAB 체험판', src: 'https://kelly-english.github.io/KELLY-PHONICS-LAB/trial.html' }
   };
 
   /* 켈리콩 이모티콘 47종의 문구 (파일은 assets/emo/e01.webp ~ e47.webp) */
